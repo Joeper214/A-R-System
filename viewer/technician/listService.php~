@@ -1,0 +1,13 @@
+ <?php $query = mysql_query("select * from service where serviceStatus = 1");
+
+   while ($row = mysql_fetch_assoc($query)){
+
+   ?>
+   <td class='list' id='servicename'><?php echo $row['serviceName'];?></td>
+   <td class='list' id='rate'><?php echo $row['serviceRate'];?></td>
+			<td class='list'><a class='repair' href='technician.php?option=customerrepair'><em>Apply repair</em></a></td>
+		</tr>
+   <?php 	
+   //include('repairAppliedPopUp.php'); 
+} 
+   ?>

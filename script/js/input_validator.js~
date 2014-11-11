@@ -1,0 +1,85 @@
+function allNumbers(e){
+   var key;
+   if(window.event){
+      key = e.keyCode;
+   }else if(e.which){
+      key = e.which;
+   }
+                
+  if (key == 8){//backspace
+    return true;
+  }else if(key==9){//tab
+    return true;
+  }else if (key < 48 || key > 57){//alpha characters
+    return false;
+  }else{
+    return true;
+  }
+}
+
+function Decimals(e){
+  var key;
+   if(window.event){
+      key = e.keyCode;
+   }else if(e.which){
+      key = e.which;
+   }
+  alert(key);              
+  if (key == 8){//backspace
+    return true;
+  }else if(key==9){//tab
+    return true;
+  }else if(key==190){//decimal point
+    return true;
+  }else if (key < 48 || key > 57){//alpha characters
+    return false;
+  }else{
+    return true;
+  }
+}
+
+function emptyStr(str) {
+  var i = 0;
+  var length = str.length;
+                     
+  for (i = 0; i < length; i++) {
+     if (str.charAt(i) != ' ')
+        return false;
+  }               
+        return true;    
+}
+
+//this function will validate a string if it is 
+//a valid date format mm/dd/yyyy
+function isValidDateForm1(str){
+    if(str.length<10 || str.length>10){
+	return false;
+    }else if(str.charAt(2)!='/' || str.charAt(5)!='/'){
+	return false;
+    }else{
+	return true;
+    }
+}
+
+
+function isValidMonth(month){
+    return (month>0 && month<=12);
+}
+
+
+//these functions will get moth, day and year 
+//from a date string format mm/dd/yyyy
+
+
+function getMonthFromStr(str_date){
+  return str_date.substr(0,2);
+}
+
+function getDayFromStr(str_date){
+  return str_date.substr(3,2);
+}
+
+function getYearFromStr(str_date){
+  return str_date.substr(6,4);
+}
+

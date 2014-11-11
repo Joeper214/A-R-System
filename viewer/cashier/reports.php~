@@ -1,0 +1,167 @@
+<div id='adminleft'>
+	<header id='accounttitle'>
+		<p>Transaction Reports</p>
+	</header>
+	<table>
+		<form method='POST'>
+			<tr>
+				<td>Transaction type</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='month' class='inputselect'>
+						<option>All</option>
+						<option>Sales</option>
+						<option>Technical</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>From</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='month' class='inputselect' style='width: 100px;'>
+						<option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+					</select>
+					<select name='status' class='inputselect' style='width: 50px;'>
+						<?php
+							for ($i=1; $i<=31; $i++) {
+								echo '<option>'.$i.'</option>';
+							}
+						?>
+					</select>
+					<select name='status' class='inputselect' style='width: 100px;'>
+						<?php
+							for ($i=2010; $i<=2014; $i++) {
+								echo '<option>'.$i.'</option>';
+							}
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>To</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='month' class='inputselect' style='width: 100px;'>
+						<option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+					</select>
+					<select name='status' class='inputselect' style='width: 50px;'>
+						<?php
+							for ($i=1; $i<=31; $i++) {
+								echo '<option>'.$i.'</option>';
+							}
+						?>
+					</select>
+					<select name='status' class='inputselect' style='width: 100px;'>
+						<?php
+							for ($i=2010; $i<=2014; $i++) {
+								echo '<option>'.$i.'</option>';
+							}
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2'><input type='submit' class='fullinputbutton' name='viewreports' value='VIEW REPORTS' /></td>
+			</tr>
+		</form>
+	</table>
+</div>
+
+<div id='adminright'>
+	<header id='accounttitle'>
+		<p>List of all transactions</p>
+		<ul id='search'>
+			<li><input type='text' name='search' value="Search Customer" onfocus="if (this.value == &#39;Search Customer&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search Customer&#39;;}"/></li>
+			<li><a href='#' name='search'/></a></li>
+		</ul>
+		<ul id='productfilter'>
+			<li>Sort by &nbsp; </li>
+			<li>
+				<select name='productfilter' class='inputselectproductfilter'>
+					<option>Date</option>
+					<option>Name</option>
+					<option>Type</option>
+				</select>
+			</li>
+			<li><a href='#' name='view'/></a></li>
+		</ul>
+	</header>
+
+	<table id='emplisttable'>
+		<tr>	
+			<th class='listtitle' id='tabletitle'>Date</th>
+			<th class='listtitle' id='tabletitle'>Customer Name</th>
+			<th class='listtitle'>Transaction</th>
+			<th class='listtitle' id='tabletitle'>Attendant</th>
+			<th class='listtitle'>Payment</th>
+			<th class='listtitle'>View</th>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list salesreportscustomername'>AL-SHARIEF, Zahra Fatmah</td>
+			<td class='list bold'>Sales</td>
+			<td class='list salesreportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 15,250.00</td>
+			<td class='list'><a class='view' href='cashier.php?option=salesreportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/12/2013</td>
+			<td class='list salesreportscustomername'>POLAYAGAN, Abdul fatah</td>
+			<td class='list bold'>Sales</td>
+			<td class='list salesreportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 23,000.00</td>
+			<td class='list'><a class='view' href='cashier.php?option=salesreportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/14/2013</td>
+			<td class='list salesreportscustomername'>CALI, Mohammad</td>
+			<td class='list bold'>Technical</td>
+			<td class='list salesreportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 950.00</td>
+			<td class='list'><a class='view' href='cashier.php?option=technicalreportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list salesreportscustomername'>AL-SHARIEF, Zahra Fatmah</td>
+			<td class='list bold'>Sales</td>
+			<td class='list salesreportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 15,250.00</td>
+			<td class='list'><a class='view' href='cashier.php?option=salesreportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list salesreportscustomername'>MUSOR, Johary</td>
+			<td class='list bold'>Sales</td>
+			<td class='list salesreportsattendant'>USMAN, Abdullah</td>
+			<td class='list transactionpayment'>P 7,750.00</td>
+			<td class='list'><a class='view' href='cashier.php?option=salesreportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list salesreportscustomername'>AL-SHARIEF, Zahra Fatmah</td>
+			<td class='list bold'>Sales</td>
+			<td class='list salesreportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 15,250.00</td>
+			<td class='list'><a class='view' href='cashier.php?option=salesreportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr class='serviceacquiredtotal'>	
+			<td colspan='4' class='list amountdue'>TOTAL &nbsp; :</td>
+			<td colspan='2' class='list'>P 77,450.00</td>
+		</tr>
+	</table>
+	
+	<form method='POST'>
+		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printsalesreport' value='PRINT REPORT' />
+	</form>
+	
+</div>
+<div id='clear'></div>
+<?php
+	if(isset($_POST['printsalesreport'])) {
+		echo "<script>printSalesReport()</script>";
+	}
+?>

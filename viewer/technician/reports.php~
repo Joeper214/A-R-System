@@ -1,0 +1,109 @@
+<div id='adminleft'>
+	<header id='accounttitle'>
+		<p>Transaction Reports</p>
+	</header>
+	<table>
+
+		<form method='POST'>
+			<tr>
+				<td>Month of: </td>
+			</tr>
+			<tr>
+				<td>
+					<select name='month' class='inputselect' style='width: 100px;'>
+						<option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+					</select>
+			</tr>
+			<tr>
+				<td colspan='2'><input type='submit' class='fullinputbutton' name='viewreports' value='VIEW REPORTS' /></td>
+			</tr>
+		</form>
+	</table>
+</div>
+
+<div id='adminright'>
+	<header id='accounttitle'>
+		<p>Technical transactions</p>
+		<ul id='search'>
+			<li><input type='text' name='search' value="Search Customer" onfocus="if (this.value == &#39;Search Customer&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search Customer&#39;;}"/></li>
+			<li><a href='#' name='search'/></a></li>
+		</ul>
+		<ul id='productfilter'>
+			<li>Sort by &nbsp; </li>
+			<li>
+				<select name='productfilter' class='inputselectproductfilter'>
+					<option>Date</option>
+					<option>Name</option>
+				</select>
+			</li>
+			<li><a href='#' name='view'/></a></li>
+		</ul>
+	</header>
+
+	<table id='emplisttable'>
+		<tr>	
+			<th class='listtitle' id='tabletitle'>Date</th>
+			<th class='listtitle' id='tabletitle'>Customer Name</th>
+			<th class='listtitle' id='tabletitle'>Attendant</th>
+			<th class='listtitle'>Payment</th>
+			<th class='listtitle'>View</th>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list reportscustomername'>AL-SHARIEF, Zahra Fatmah</td>
+			<td class='list reportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 15,250.00</td>
+			<td class='list'><a class='view' href='technician.php?option=reportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/12/2013</td>
+			<td class='list reportscustomername'>POLAYAGAN, Abdul fatah</td>
+			<td class='list reportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 23,000.00</td>
+			<td class='list'><a class='view' href='technician.php?option=reportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/14/2013</td>
+			<td class='list reportscustomername'>CALI, Mohammad</td>
+			<td class='list reportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 950.00</td>
+			<td class='list'><a class='view' href='technician.php?option=reportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list reportscustomername'>AL-SHARIEF, Zahra Fatmah</td>
+			<td class='list reportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 15,250.00</td>
+			<td class='list'><a class='view' href='technician.php?option=reportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list reportscustomername'>MUSOR, Johary</td>
+			<td class='list reportsattendant'>USMAN, Abdullah</td>
+			<td class='list transactionpayment'>P 7,750.00</td>
+			<td class='list'><a class='view' href='technician.php?option=reportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='reportdate'>01/15/2013</td>
+			<td class='list reportscustomername'>AL-SHARIEF, Zahra Fatmah</td>
+			<td class='list reportsattendant'>ALI, Abdul Mujeeb D.</td>
+			<td class='list transactionpayment'>P 15,250.00</td>
+			<td class='list'><a class='view' href='technician.php?option=reportsdetail'><em>view detail</em></a></td>
+		</tr>
+		<tr class='serviceacquiredtotal'>	
+			<td colspan='3' class='list amountdue'>TOTAL &nbsp; :</td>
+			<td colspan='2' class='list'>P 70,450.00</td>
+		</tr>
+	</table>
+	
+	<form method='POST'>
+		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printtechnicalreport' value='PRINT REPORT' />
+	</form>
+	
+</div>
+<div id='clear'></div>
+<?php
+	if(isset($_POST['printtechnicalreport'])) {
+		echo "<script>printTechnicalReport()</script>";
+	}
+?>

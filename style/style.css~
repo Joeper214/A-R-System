@@ -1,0 +1,928 @@
+html,
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Arial;
+	font-size: 12px;
+	color: #666;
+	height: 100%;
+}
+div, table, tr, td, ul, li, a, select, option, submit, input, button, hr, textarea, header, footer, aside, datalist, summary, detail {
+	font-family: Arial;
+	margin: 0px;
+	padding: 0px;
+}
+div, table, tr, td, ul, li, a, select, option, submit, input, textarea {
+	font-size: 12px;
+}
+textarea {
+	padding: 5px;
+}
+#wrapper {
+	min-height:100%;
+    position:relative;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#fff', EndColorStr='#efefef')
+	background-image: -moz-linear-gradient(top, #fff, #efefef);
+	background-image: -webkit-linear-gradient(top, #fff, #efefef);
+	background-image: linear-gradient(to bottom, #fff, #efefef);
+}
+#Header {
+	height: 180px;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#005ab5', EndColorStr='#0092da')
+	background-image: -moz-linear-gradient(top, #005ab5, #0092da);
+	background-image: -webkit-linear-gradient(top, #005ab5, #0092da);
+	background-image: linear-gradient(to bottom, #005ab5, #0092da);
+	border-bottom: 3px solid #94ce18;
+}
+#banner {
+	width: 1024px;
+	margin: 0px auto;
+	height: 150px;
+	background-image: url(../images/banner.png);
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+#toprightbutton {
+	height: 25px;
+	width: 1024px;
+	margin: 5px auto 0px;
+}
+#toprightbutton ul {
+	float: right;
+}
+#toprightbutton a {
+	height: 25px;
+	line-height: 25px;
+	display: block;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0px 0px 0px 5px;
+	padding: 0px 10px;
+	color: #154B70;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	background-image: url(../images/tabright.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+}
+#toprightbutton a:hover {
+	color: #fff;
+	background-position: center bottom;
+}
+#headerline {
+	height: 15px;
+	background: #154B70;
+}
+#container {
+	min-height: 100%;
+	width: 1024px;
+	margin: 0px auto;
+    padding-bottom:35px;
+}
+#footer {
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#0092da', EndColorStr='#005ab5')
+	background-image: -moz-linear-gradient(top, #0092da, #005ab5);
+	background-image: -webkit-linear-gradient(top, #0092da, #005ab5);
+	background-image: linear-gradient(to bottom, #0092da, #005ab5);
+	position: absolute;
+	border-top: 3px solid #94ce18;
+    bottom: 0;
+	height: 35px;
+	width: 100%;
+	margin-top: 0px;
+	clear: both;
+}
+#footer p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+	line-height: 35px;
+	padding: 0px;
+	margin: 0px;
+	color: #fff;
+}
+
+/** Login Page */
+
+#loginfield header {
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+	color: #154B70;
+}
+#loginfield {
+	height: 155px;
+	width: 325px;
+	margin: 115px auto;
+	padding: 15px 25px 15px 20px;
+}
+.loginbuttons {
+	float: right;
+}
+fieldset {
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#d3dfe4', EndColorStr='#eef2f4')
+	background-image: -moz-linear-gradient(top, #d3dfe4, #eef2f4);
+	background-image: -webkit-linear-gradient(top, #d3dfe4, #eef2f4);
+	background-image: linear-gradient(to bottom, #d3dfe4, #eef2f4);
+	border: 2px solid #fff;
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px #000;
+}
+.radiusinput input {
+	border: none;
+	color: #333;
+	margin: 1px;
+	padding-left: 5px;
+}
+.radiusinput input[type="text"]:focus, .radiusinput input[type="password"]:focus {
+	color : #154B70;
+	border : none;
+	background-color : #ff9;
+}
+.userpass {
+	color: #666;
+	font-size: 13px;
+	font-weight: bold;
+	padding-right: 5px;
+}
+.radiusinput {
+	font-size: 12px;
+	border-radius: 5px;
+	border: 1px solid #666;
+	height: 15px;
+}
+.gradientbutton {
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#4387b6', EndColorStr='#205f8d')
+	background-image: -moz-linear-gradient(top, #4387b6, #205f8d);
+	background-image: -webkit-linear-gradient(top, #4387b6, #205f8d);
+	background-image: linear-gradient(to bottom, #4387b6, #205f8d);
+	color: #fff;
+	font-weight: bold;
+	border: 1px solid #fff;
+	width: 80px;
+	margin: 5px 0px 0px 5px;
+	padding: 3px 15px;
+	box-shadow: 0px 0px 1px #000;
+}
+.gradientbutton:hover {
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#205f8d', EndColorStr='#4387b6')
+	background-image: -moz-linear-gradient(top, #205f8d, #4387b6);
+	background-image: -webkit-linear-gradient(top, #205f8d, #4387b6);
+	background-image: linear-gradient(to bottom, #205f8d, #4387b6);
+}
+p {
+	text-align: center;
+	align: center;
+}
+
+/* Admin Page*/
+#managelink {
+	padding-bottom: 4px;
+	border-bottom: 1px solid #bbb;
+}
+#managelink a {
+	font-size: 12px;
+	font-weight: bold;
+	border-bottom: 4px solid #fff;
+	color: #154B70;
+}
+#managelink a:hover {
+	border-bottom: 4px solid #94ce18;
+	color: #266996;
+}
+#notavailable a {
+	font-family: arial;
+	font-weight: light;
+	color:red;
+}
+#available a{
+	color:blue;
+	font-family: arial;
+	font-weight: light;
+}
+#placeholder {
+	/*width: 960px;*/
+	width: 1024px;
+	min-height: 100%;
+	padding: 0px;
+	margin: 25px auto;
+	border: 1px solid #bbb;
+	color: #666;
+	background: #fff;
+}
+#accounttitle {
+	color: #666;
+	font-weight: bold;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+#accounttitle p {
+	margin: 10px 0px;
+	padding: 0px;
+	font-size: 18px;
+}
+#accountlink {
+	margin: 0px;
+	padding: 0px;
+	background: #154B70;
+	border-bottom: 3px solid #94ce18;
+}
+#accountlink ul {
+	color: #fff;
+}
+#accountlink a:hover {
+	text-shadow: 0px 0px 3px #000;
+	background: #94ce18;
+}
+#accountlink a {
+	color: #fff;
+	font-weight: bold;
+}
+.admininfo {
+	padding-left: 10px;
+}
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0px;
+	height: 30px;
+	line-height: 30px;
+}
+#managelink li, #toprightbutton li, #accountlink li, #search li, #productleft li, #productfilter li, #addemployee li, #addcategory li, #addproduct li {
+	float: left;
+}
+a {
+	display: block;
+	height: 30px;
+	padding: 0px 15px;
+	font-size: 13px;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+}
+a:hover, list:hover {
+	color: #000;
+}
+#img {
+	margin: 10px 10px 50px 30px;
+	width: 250px;
+	height: 240px;
+	padding: 0px;
+}
+#img img {
+	border: 1px solid #154B70;
+}
+input[type="file"] {
+	margin-top: 5px;
+	padding: 0px;
+	height: 30px;
+}
+#emptable, #home {
+	margin: -290px 0px -30px 300px;
+	padding-bottom: 65px;
+	font-size: 12px;
+	color: #666;
+	font-weight: bold;
+}
+#emptable tr, #home tr {
+	height: 20px;
+}
+#home input[disabled="true"] {
+	border: 1px solid #fff;
+}
+#userinfotable {
+	margin: -295px 0px -50px 300px;
+	padding-bottom: 70px;
+	font-size: 12px;
+	color: #666;
+	font-weight: bold;
+}
+#accountpasswordusername {
+	color: #666;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0px 0px 15px 15px;
+}
+.button, .inputbutton, .fullinputbutton, .inputbutton1, .inputbutton2, .inputbutton3, .inputbutton4, .inputbutton5, .buttonlink {
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#4387b6', EndColorStr='#205f8d')
+	background-image: -moz-linear-gradient(top, #4387b6, #205f8d);
+	background-image: -webkit-linear-gradient(top, #4387b6, #205f8d);
+	background-image: linear-gradient(to bottom, #4387b6, #205f8d);
+	padding: 0px;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	height: 25px;
+	line-height: 25px;
+	float: right;
+	border: 1px solid #fff;
+	box-shadow: 0px 0px 1px #000;
+}
+.button {
+	width: 85px;
+	margin: 10px 0px 0px 10px
+}
+.inputbutton {
+	width: 85px;
+	margin: 10px 0px 0px 10px
+}
+.fullinputbutton, .buttonlink {
+	width: 255px;
+	margin-top: 10px;
+}
+.inputbutton1 {
+	margin-left: 5px;
+	width: 83px;
+}
+.inputbutton2 {
+	width: 250px;
+	margin-top: 5px;
+}
+.inputbutton3 {
+	width: 90px;
+	margin-left: 5px;
+}
+.inputbutton4 {
+	width: 255px;
+	margin-top: 5px;
+}
+.inputbutton5 {
+	width: 107px;
+	margin-top: 5px;
+}
+.inputbutton:hover, .inputbutton1:hover, .inputbutton2:hover, .inputbutton3:hover, .inputbutton4:hover, .inputbutton5:hover, .buttonlink:hover, .fullinputbutton:hover {
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#205f8d', EndColorStr='#4387b6')
+	background-image: -moz-linear-gradient(top, #205f8d, #4387b6);
+	background-image: -webkit-linear-gradient(top, #205f8d, #4387b6);
+	background-image: linear-gradient(to bottom, #205f8d, #4387b6);
+}
+.buttonlink, .buttonlink:hover {
+	color: #fff;
+	text-align: center;
+}
+img {
+	margin: 0px;
+	padding: 0px;
+	width: 250px;
+	height: 240px;
+}
+.input, .input1, .input2, .input3, .input4 {
+	color: #333;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 0 0 5px;
+	border: 1px solid #999;
+}
+.input {
+	width: 255px;
+}
+.input1 {
+	width:215px;
+}
+.input2 {
+	width:176px;
+}
+.input3 {
+	width:185px;
+}
+.input4 {
+	width:160px;
+}
+.textarea {
+	width:255px;
+}
+.textarea2 {
+	min-width: 255px;
+	max-width: 255px;
+	margin-bottom: -10px;
+}
+.textarea1 {
+	min-width: 255px;
+	max-width: 255px;
+}
+.inputv {
+	color: #333;
+	background: #fff;
+	margin-left: 10px;
+	border: none;
+	width: 255px;
+}
+.inputselect {
+	padding: 3px 2px 2px;
+	height: 25px;
+	line-height: 25px;
+	color: #666;
+	width: 255px;
+}
+.inputselectproductfilter {
+	width: 100px;
+	margin-right: 1px;
+	height: 23px;
+	line-height: 23px;
+	color: #666;
+}
+.productfilterview {
+	margin-right: 50px;
+	height: 25px;
+	width: 75px;
+}
+.inputselect option {
+	color: #000;
+	height: 20px;
+	line-height: 20px;
+	padding: 2px;
+}
+#servicelist {
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.browse {
+	width: 250px;
+	padding: 3px 0px;
+	margin: 10px 0px 0px 0px;
+}
+
+
+/* Manage Employee */
+#adminleft, #productleft {
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#efefef', EndColorStr='#fff')
+	background-image: -moz-linear-gradient(top, #efefef, #fff);
+	background-image: -webkit-linear-gradient(top, #efefef, #fff);
+	background-image: linear-gradient(to bottom, #efefef, #fff);
+	min-height: 100%;
+	float: left;
+	margin: 5px 0px 5px 5px;
+	border: 1px solid #bbb;
+}
+#adminleft {
+	width: 260px;
+	padding: 5px 10px 10px;
+}
+#productleft {
+	width: 260px;
+	padding: 5px 10px 10px;
+}
+#productleft ul {
+	margin: 0px;
+	padding: 0px;
+}
+#productleft li {
+	margin: 0px;
+	padding: 0px;
+	width: 260px;
+	height:32px;
+	line-height:32px;
+	filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#0092da', EndColorStr='#005ab5')
+	background-image: -mourl(../images/icons/arrow.png),z-linear-gradient(top, #0092da, #005ab5);
+	background-image: -webkit-linear-gradient(top, #0092da, #005ab5);
+	background-image: linear-gradient(to bottom, #0092da, #005ab5);
+}
+#productleft a {
+	font-size: 13px;
+	margin: 0px;
+	padding-left: 30px;
+	color: #fff;
+	text-shadow: 0px 0px 1px #000;
+	display: block;
+	text-align: left;
+	font-weight: bold;
+	border: 1px solid #fff;
+	background-image: url(../images/icons/arrow.png);
+	background-repeat: no-repeat;
+	background-position: 7px 7px;
+}
+#productleft a {
+	transition: background-position .3s;
+	-moz-transition: background-position .3s;
+	transition: padding-left .3s;
+	-moz-transition: padding-left .3s;
+	transition: background-image .3s;
+	-moz-transition: background-image .3s;
+}
+#productleft a:hover {
+	padding-left: 45px;
+	text-shadow: none;
+	color: #154B70;
+	border: 1px solid #94ce18;
+	background-position: 20px 7px;
+	background-image: url(../images/icons/arrowhover.png);
+	
+}
+#productleft li:hover {
+	background: #fff;
+}
+#adminleft header {
+	margin-bottom: 20px;
+	padding: 0 0 0 5px;
+	color: #154B70;
+	border-bottom: 4px solid #94ce18;
+}
+#adminleft a {
+	text-align: left;
+	height: 30px;
+}
+#productleft header {
+	padding: 0px;
+	color: #154B70;
+}
+#adminleft td {
+	
+	font-weight: bold;
+}
+#adminleft p, #productleft p{
+	text-align: left;
+}
+#serviceacquired {
+	width: 260px;
+	text-align: left;
+	border: 1px solid #bbb;
+	margin: 15px 0px 0px 0px;
+}
+#serviceacquired td {
+	border-bottom: 1px solid #bbb;
+}
+#serviceacquiredname {
+	width: 75%;
+	padding-left: 5px;
+}
+#removeservice {
+	text-align: center;
+}
+.serviceacquiredtotal td {
+	border-bottom: 1px solid transparent;
+	background: #ffc;
+	padding: 5px;
+	color: #000;
+	font-weight: bold;
+}
+.amountdue {
+	padding-left: 5px;
+	text-align: right;
+}
+#serviceacquired th {
+	background: #154B70;
+	padding: 5px;
+	color: #fff;
+}
+#serviceacquired a {
+	display: block;
+}
+#serviceacquired tr {
+	color: #666;
+}
+#serviceacquired tr:hover {
+	background: #ff9;
+	color: #000;
+}
+#repairbuttons {
+	width: 260px;
+	margin: 5px 0px -15px 0px;
+}
+#adminright, #productright {
+	float: right;
+	padding: 0px 10px 0px 5px;
+	margin: 5px 0px;
+}
+#adminright {
+	/*width: 655px;*/
+	width: 719px;
+}
+#productright {
+	/*width: 655px;*/
+	width: 719px;
+}
+#adminright p, #productright p {
+	text-align: left;
+	padding-left: 5px;
+}
+#emplisttable, #productlisttable {
+	border: 1px solid #bbb;
+	border-bottom: 3px solid #94ce18;
+}
+#emplisttable {
+	/*width: 655px;*/
+	width: 719px;
+}
+#productlisttable {
+	/*width: 655px;*/
+	width: 719px;
+}
+#emplisttable tr, #productlisttable tr {
+	color: #666;
+}
+#emplisttable th, #productlisttable th {
+	background: #154B70;
+	border-bottom: 3px solid #94ce18;
+}
+#emplisttable td, #tablefull td, #productlisttable td {
+	border-bottom: 1px solid #d5d5d5;
+}
+#emplisttable tr:hover, #tablefull tr:hover, #productlisttable tr:hover {
+	background: #ffc;
+	color: #000;
+	background-image: url(../images/icons/pointers.png);
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+#clear {
+	clear: both;
+}
+#search {
+	float: right;
+	margin: -35px 0 5px 0;
+	border: 1px solid #bbb;
+	border-radius: 5px;
+	padding: 0px;
+}
+#search input {
+	color: #666;
+	height: 24px;
+	width: 150px;
+	border: none;
+	line-height: 24px;
+	margin-left: 5px;
+}
+#search input:focus {
+	border : none;
+	background-color : #fff;
+}
+#search a {
+	background-image: url(../images/icons/search.png);
+}
+#search a:hover {
+	background-image: url(../images/icons/searchhover.png);
+}
+#productfilter {
+	float: right;
+	margin: -35px 50px 0px 0;
+	padding: 0px 0px 0px 5px;
+}
+#addemployee, #addcategory, #addproduct {
+	height: 28px;
+	float: right;
+	margin: -35px 100px 0px 0;
+	padding: 0px 0px 0px 15px;
+	background-image: url(../images/icons/createaccount.png);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	border: 1px solid #fff;
+}
+#addemployee:hover, #addcategory:hover, #addproduct:hover {
+	background-image: url(../images/icons/addemployeehover.png);
+	border: 1px solid #94ce18;
+}
+#productfilter select {
+	border: 1px solid #bbb;
+}
+#productfilter a {
+	height: 35px;
+	background-image: url(../images/icons/view.png);
+}
+#productfilter a:hover {
+	background-image: url(../images/icons/viewhover.png);
+}
+input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="radio"]:focus, select:focus, textarea:focus {
+	color : #154B70;
+	border : 1px solid #154B70;
+	background-color : #ff9;
+}
+#adminleft input[disabled="true"], #adminleft textarea[disabled="true"], #adminleft select[disabled="true"], #productleft input[disabled="true"], #productleft textarea[disabled="true"], #productright input[disabled="true"] {
+	font-family: Arial;
+	font-size: 13px;
+	color: #154B70;
+	background: #fff;
+	border: 1px solid #d7d7d7;
+}
+#tabletitle {
+	text-align: left;
+}
+.employeetabletitle, .brandtabletitle, .categorytabletitle, .producttabletitle, .servicetabletitle, .customertabletitle {
+	width: 100%;
+}
+.warrantyproducttitle, .warrantybuyertitle {
+	width: 33%;
+}
+.left {
+	text-align: left;
+}
+.center {
+	text-align: center;
+}
+.reportscustomername, .reportsattendant, .reportdate, .transactionpayment, #reportdate, .salesreportscustomername, .salesreportsattendant, .technicalpendingpaymentname, .technicalpendingpaymentaquiredservices, .technicalpayment {
+	padding: 0px 5px;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+}
+.reportscustomername, .reportsattendant {
+	width: 210px;
+}
+.salesreportscustomername, .salesreportsattendant {
+	width: 170px;
+}
+.technicalpendingpaymentname, .technicalpendingpaymentaquiredservices {
+	width: 170px;
+}
+.transactionpayment, .technicalpayment {
+	text-align: right;
+}
+ul, li, a  {
+	color: #666;
+}
+.listtitle {
+	padding:5px 10px;
+	color: #fff;
+}
+.list {
+	padding:0px;
+	margin: 0px;
+}
+#categoryname, #productname, #brandname, #employeename, #servicename, #customername, #notedescription, #reportdate {
+	padding-left: 12px;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+}
+.createaccount, .useredit, .userview, .view, .edit, .addstock, .replace, .userenable, .userdisable, .enabled, .disabled, .available, .unavailable, .repair, .sales, .addtocart, .serviceapplied, .remove, .removefromcart, .changequantity, #productfilter a, #search a, .browsephoto, .takepic {
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.userenable, .userdisable, .enabled, .disabled, .available, .unavailable {
+	width: 82px;
+}
+#imgholder img {
+	width: 250px;
+	height: 250px;
+	margin: 0px;
+	border: 1px solid #154B70;
+}
+.browsephoto {
+	background-image: url(../images/icons/browsephoto.png);
+	border: 1px solid #154B70;
+}
+.browsephoto:hover {
+	background-image: url(../images/icons/browsephotohover.png);
+	background-color: #94ce18;
+	border: 1px solid #154B70;
+}
+.takepic {
+	background-image: url(../images/icons/takepic.png);
+	border: 1px solid #154B70;
+	border-top: none;
+}
+.takepic:hover {
+	background-image: url(../images/icons/takepichover.png);
+	background-color: #94ce18;
+	border: 1px solid #154B70;
+	border-top: none;
+}
+.createaccount {
+	background-image: url(../images/icons/createaccount.png);
+}
+.createaccount:hover {
+	background-image: url(../images/icons/createaccounthover.png);
+}
+.useredit {
+	background-image: url(../images/icons/useredit.png);
+}
+.userview {
+	background-image: url(../images/icons/userview2.png);
+}
+.view {
+	background-image: url(../images/icons/view.png);
+}
+.view:hover {
+	background-image: url(../images/icons/viewhover.png);
+}
+.edit {
+	background-image: url(../images/icons/edit.png);
+}
+.edit:hover {
+	background-image: url(../images/icons/edithover.png);
+}
+.addstock {
+	background-image: url(../images/icons/addstock.png);
+}
+.addstock:hover {
+	background-image: url(../images/icons/addstockhover.png);
+}
+.replace {
+	background-image: url(../images/icons/replace.png);
+}
+.replace:hover {
+	background-image: url(../images/icons/replacehover.png);
+}
+.available {
+	background-image: url(../images/icons/enabled.png);
+}
+.available:hover {
+	background-image: url(../images/icons/enablehover.png);
+}
+.enabled {
+	background-image: url(../images/icons/enabled.png);
+}
+.enabled:hover {
+	background-image: url(../images/icons/enablehover.png);
+}
+.disabled {
+	background-image: url(../images/icons/disabled.png);
+}
+.disabled:hover {
+	background-image: url(../images/icons/disablehover.png);
+}
+.unavailable {
+	background-image: url(../images/icons/disabled.png);
+}
+.unavailable:hover {
+	background-image: url(../images/icons/disablehover.png);
+}
+.userenable {
+	background-image: url(../images/icons/enabled.png);
+}
+.userenable:hover {
+	background-image: url(../images/icons/enablehover.png);
+}
+.userdisable {
+	background-image: url(../images/icons/disabled.png);
+}
+.userdisable:hover {
+	background-image: url(../images/icons/disablehover.png);
+}
+em {
+	display: none;
+	line-height: 25px;
+}
+.back {
+	background-image: url(../images/icons/back.png);
+	background-repeat: no-repeat;
+	background-position: center left;
+	margin-left: 5px;
+	font-size: 15px;
+	text-align: left;
+	height: 24px;
+	line-height: 24px;
+	margin: 10px 0px;
+	padding-left: 30px;
+	color: #154B70;
+}
+.back:hover {
+	background-image: url(../images/icons/backhover.png);
+	color: #266996;
+}
+.repair {
+	background-image: url(../images/icons/repair.png);
+}
+.repair:hover {
+	background-image: url(../images/icons/repairhover.png);
+}
+.sales {
+	background-image: url(../images/icons/sales.png);
+}
+.sales:hover {
+	background-image: url(../images/icons/saleshover.png);
+}
+.addtocart {
+	background-image: url(../images/icons/cart.png);
+}
+.addtocart:hover {
+	background-image: url(../images/icons/carthover.png);
+}
+.stock {
+	text-align: center;
+}
+.price {
+	text-align: right;
+	font-weight: bold;
+	
+}
+.serviceapplied {
+	background-image: url(../images/icons/applied.png);
+}
+.serviceapplied:hover {
+	background-image: url(../images/icons/appliedhover.png);
+}
+.remove {
+	background-image: url(../images/icons/remove.png);
+}
+.remove:hover {
+	background-image: url(../images/icons/removehover.png);
+}
+.changequantity {
+	background-image: url(../images/icons/changequantity.png);
+}
+.changequantity:hover {
+	background-image: url(../images/icons/changequantityhover.png);
+}
+#price, #rate, .pricerates {
+	text-align: right;
+	padding-right: 5px;
+}
+.bold {
+	font-weight: bold;
+}
+#paymentform {
+	margin: -90px 0 10px 459px;
+}

@@ -1,0 +1,57 @@
+<?php 
+    $get = new GetModel();
+if(isset($_POST['transtype'])){
+  if($_POST['month'] == 1){
+        $transactions = $get->getOnlySales();
+  }else if($_POST['month'] == 2){
+        $transactions = $get->getOnlyTech();
+    
+  }else{
+    $transactions = $get->getSalesTransactions();
+  }
+}else{
+  $transactions = $get->getSalesTransactions();
+}
+
+if($transactions){
+    foreach($transactions as $transaction){
+      //      print_r($transaction);
+      $date = new DateTime($transaction['dateRecorded']);
+
+      $amount = number_format($transaction['amountDue'], 2, '.', ',');
+
+?>
+
+     
+		<tr>	
+		   <td class='list' id='reportdate'><?php echo $date->format('m/d/Y'); ?></td>
+<td class='list salesreportscustomername'><?php echo $transaction['lname']." ,"
+                                .$transaction['fname']; ?> </td>
+							      <td class='list bold'><?php if($transaction['transactionType'] == 1){
+	echo "Sales";
+      }else{
+	echo "Technical";
+      }
+							      ?></td>
+			<td class='list salesreportsattendant'><?php 
+			   $attendant = $get->getAttendant($transaction['accountID']);
+                            echo $attendant;
+                           ?></td>
+			<td class='list transactionpayment'><?php 
+			   echo $amount;
+?>
+			   </td>
+
+<?php if($transaction['transactionType'] == 1){ ?>
+	<td class='list'><a class='view' href='admin.php?option=salesdetail&transID=<?php echo $transaction['transactionID'];?>'><em>view detail</em></a></td>
+<?php       }else{ ?>
+        <td  class='list'><a class='view' href='admin.php?option=technicaldetail&transID=<?php echo $transaction['transactionID'];?>'></td>
+				<?php       } ?>
+		
+		</tr>
+		<tr>	
+		    <?php }
+    }else{ ?>
+      <tr><td></td><td>No Transactions yet.</td></tr>
+  <?php  }
+ ?><!-- End list -->

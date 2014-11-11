@@ -1,0 +1,174 @@
+<div id='adminleft'>
+	<header id='accounttitle'>
+		<p>Generate Report</p>
+	</header>
+	<table>
+
+		<form method='POST'>
+			<tr>
+				<td>Use Case</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='gender' class='inputselect'>
+						<option>Product</option>
+						<option>Employee</option>
+						<option>Service</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Category</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='gender' class='inputselect'>
+						<option>All</option>
+						<?php
+						$query = mysql_query("SELECT * FROM category");
+								
+						while($row = mysql_fetch_assoc($query)) {
+						?>
+							<option><?php echo $row['categoryName']; ?></option>
+						<?php
+						}	
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Brand</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='gender' class='inputselect'>
+						<option>All</option>
+						<?php
+						$query = mysql_query("SELECT * FROM brand");
+									
+						while($row = mysql_fetch_assoc($query)) {
+						?>
+							<option><?php echo $row['brandName']; ?></option>
+						<?php
+						}
+						mysql_close();
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Status</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='gender' class='inputselect'>
+						<option>All</option>
+						<option>Available</option>
+						<option>Unavailable</option>
+						<option>Enabled</option>
+						<option>Disabled</option>
+						<option>Defective</option>
+						<option>Disposed</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Sort by</td>
+			</tr>
+			<tr>
+				<td>
+					<select name='gender' class='inputselect'>
+						<option>Name</option>
+						<option>Stock</option>
+						<option>Price/Rate</option>
+						<option>Status</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2'>
+					<input type='submit' class='fullinputbutton' name='viewbrandreport' value='VIEW' />
+				</td>
+			</tr>
+		</form>
+	</table>
+</div>
+
+<div id='adminright'>
+	<header id='accounttitle'>
+		<p>Product Report</p>
+	</header>
+
+	<table id='emplisttable'>
+		<tr>	
+			<th class='listtitle producttabletitle' id='tabletitle'>Product Name</th>
+			<th class='listtitle'>Stock</th>
+			<th class='listtitle'>Price</th>
+			<th class='listtitle'>Status</th>
+		</tr>
+
+  <?php $query  = mysql_query("SELECT * from product");
+
+	  while($row = mysql_fetch_assoc($query)){ 
+
+     $price = number_format($row['price'], 2, '.', ',');
+  ?>
+
+		<tr class='trlist'>	
+		   <td class='list' id='productname'><?php echo $row['productName'];?></td>
+ 		<td class='list stock'><?php echo $row['stock']?></td>
+        	<td class='list stock'>P <?php echo $price; ?></td>
+			<td class='list'><a class='enabled' href='#'><em>Enabled</em></a></td>
+		</tr>
+   <?php }?>
+		<tr>	
+			<td class='list' id='productname'>SAMSUNG 500GB sata HD</td>
+			<td class='list stock'>10</td>
+			<td class='list stock'>2,900.00</td>
+			<td class='list'><a class='enabled' href='#'><em>Enabled</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='productname'>Kingston 32GB Thumb Drive</td>
+			<td class='list stock'>20</td>
+			<td class='list stock'>750.00</td>
+			<td class='list'><a class='disabled' href='#'><em>Disabled</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='productname'>NEO External DVD</td>
+			<td class='list stock'>10</td>
+			<td class='list stock'>1,750.00</td>
+			<td class='list'><a class='enabled' href='#'><em>Enabled</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='productname'>HITACHI 320sata HD</td>
+			<td class='list stock'>15</td>
+			<td class='list stock'>1,500.00</td>
+			<td class='list'><a class='enabled' href='#'><em>Enabled</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='productname'>TOMADE computer case</td>
+			<td class='list stock'>15</td>
+			<td class='list stock'>1,300.00</td>
+			<td class='list'><a class='enabled' href='#'><em>Enabled</em></a></td>
+		</tr>
+		<tr>	
+			<td class='list' id='productname'>ASUS PL-MVS II</td>
+			<td class='list stock'>25</td>
+			<td class='list stock'>4,975.00</td>
+			<td class='list'><a class='disabled' href='#'><em>Disabled</em></a></td>
+		</tr>
+	</table>
+	
+	<form method='POST'>
+		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='PRINT REPORT' />
+	</form>
+	
+</div>
+<div id='clear'></div>
+<?php
+	if(isset($_POST['view'])) {
+		echo "<script>viewReport()</script>";
+	} else if(isset($_POST['printreport'])) {
+		echo "<script>printReport()</script>";
+	}
+?>

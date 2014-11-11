@@ -1,0 +1,196 @@
+<script>
+$(function(){
+    $("#da").datepicker();
+    $("#dd").datepicker();
+  });
+</script>
+
+
+
+
+<?php if(isset($_GET['msg'])){
+  echo "<p style='color:red' ><b>".$_GET['msg']."</b></p>";
+}
+?>
+
+<div id='adminleft'>
+	<header id='accounttitle'>
+		<p>Add Employee</p>
+	</header>
+	<table>
+   <form method="POST" 
+enctype="multipart/form-data"
+action="../mysystem/controller/exec_controller.php" onsubmit="return true">
+		
+<tr> <td> Photo: </td><tr></tr><td> 
+<input type="hidden" name="action" value="add">
+<input type="hidden" name="target" value="account">
+<input type="hidden" name="MAX_FILE_SIZE" value="41943040"/>
+<input type="file" name="f_attach" required="true"> 
+
+</td></tr>
+	<tr>
+<td>First name</td>
+			</tr>
+			<tr>
+<td><input class='input' onkeydown="return isAlpha(event.keyCode)" type='text' name='fname' placeholder='First name' onfocus="if (this.placeholder == &#39;First name&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;First name&#39;;}" autofocus required/></td>
+			</tr>
+			<tr>
+<td>Middle name</td>
+			</tr>
+			<tr>
+<td><input class='input' type='text' onkeydown="return isAlpha(event.keyCode)" name='mname' placeholder='Middle name' onfocus="if (this.placeholder == &#39;Middle name&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Middle name&#39;;}" autofocus required/></td>
+			</tr>
+			<tr>
+<td>Last name</td>
+			</tr>
+			<tr>
+<td><input class='input' type='text' onkeydown="return isAlpha(event.keyCode)" name='lname' placeholder='Last name' onfocus="if (this.placeholder == &#39;Last name&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Last name&#39;;}" autofocus required/></td>
+			</tr>
+			<tr>
+<td>Gender</td>
+			</tr>
+			<tr>
+				<td>
+<select name='gender' class='inputselect'>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select>
+				</td>
+			</tr>
+			<tr>
+<td>Birth date</td>
+			</tr>
+			<tr>
+				<td>
+<input class='input' id="da" value="01/01/1990" type="text" name="da" placeholder='mm/dd/YYYY' autofocus required/>
+
+
+
+				</td>
+			</tr>
+			<tr>
+<td>Birth place</td>
+			</tr>
+			<tr>
+<td><input class='input' type='text' name='birthPlace' placeholder='Birth place' onfocus="if (this.placeholder == &#39;Birth place&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Birth place&#39;;}" autofocus required/></td>
+			</tr>
+			<tr>
+<td>Religion</td>
+			</tr>
+			<tr>
+<td><input class='input' onkeydown="return isAlpha(event.keyCode)" type='text' name='religion' placeholder='Religion' onfocus="if (this.placeholder == &#39;Religion&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Religion&#39;;}" autofocus required/></td>
+			</tr>
+			<tr>
+<td>Position</td>
+			</tr>
+			<tr>
+		<td>
+<select name='position' class='inputselect'>
+	<option value='1'>Manager</option>
+	<option value='2'>Cashier</option>
+	<option value='3'>Technician</option>
+	<option value='4'>Utility</option>
+</select>
+				</td>
+			</tr>
+			<tr>
+<td>Address</td>
+			</tr>
+			<tr>
+<td><input class='input' type='text' name='address' placeholder='Address' onfocus="if (this.placeholder == &#39;Address&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Address&#39;;}" autofocus required/></td>
+			</tr>
+			<tr>
+<td>Contact no.</td>
+			</tr>
+			<tr>
+<td><input class='input' onkeydown="return allNumbers(event)" maxlength="11" type='text' name='number' placeholder='Contact number' onfocus="if (this.placeholder == &#39;Contact number&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Contact number&#39;;}" autofocus required/></td>
+			</tr>
+			<tr>
+				<td colspan='2'>
+<input type='reset' class='inputbutton' name='cancel' value='CANCEL' formnovalidate />
+<input type='submit' class='inputbutton' name='save' value='SAVE' />
+				</td>
+			</tr>
+		</form>
+	</table>
+</div>
+
+
+<div id='adminright'>
+	<header id='accounttitle'>
+		<p>List of all employee</p>
+   <form method='POST'>
+		<ul id='search'>
+                  <li> Search by:
+                     <select name="searchType" required="true">
+                        <option value="1">Firstname</option>
+                        <option value="2">Middlename</option>
+                        <option value="3">Lastname</option>
+                     </select>
+                  <li>
+			<li><input type='text' class='searchinput' name='searchKey' placeholder='Search Employee'/ required="true"></li>
+			<li><button  type='submit' name='search' autofocus/><a></a></button></li>
+		</ul>
+		</form>
+	</header>
+
+	<table id='emplisttable'>
+		<tr>	
+			<th class='listtitle employeetabletitle' id='tabletitle'>Employee Name</th>
+			<th class='listtitle'>Account</th>
+			<th class='listtitle'>Account-Status</th>
+			<th class='listtitle'>Edit</th>
+			<th class='listtitle'>View</th>
+			<th class='listtitle'>Employment-Status</th>
+		</tr>
+
+  <?php include("listEmployee.php"); ?>		
+
+
+	</table>
+	
+</div>
+<div id='clear'></div>
+<?php
+   /*
+	if(isset($_POST['save'])) {
+	  
+	  
+	  $newPersonID = NULL;
+         $query = mysql_query("insert into person(
+           fname,mname,lname,address,contactNumber)
+                 VALUES('".$_POST['fname']."','"
+                         .$_POST['mname']."','"
+                         .$_POST['lname']."','"
+                         .$_POST['address']."','"
+                         .$_POST['number']."');");
+
+	  if($query){
+	    $getPID  = mysql_query("SELECT * FROM `person` ORDER BY `person`.`personID` ASC ");
+	    while ($row = mysql_fetch_assoc($getPID)){
+	      $newPersonID = $row['personID'];
+	    }
+	    $bday = new DateTime($_POST['dd']);
+	    $dateReg = new DateTime();
+	    $select = new GetModel();
+	    $select -> addEmployee($newPersonID,
+				   $_POST['gender'],
+				   $bday->format('Y-m-d'),
+				   $_POST['birthPlace'],
+				   $_POST['religion'],
+				   $_POST['position'],
+				   $dateReg->format('Y-m-d'),
+				   $_POST['f_attach']);
+	    if($select){
+	       echo "<script>employeeAdded()</script>";
+	    }else{
+	      echo "<script>alert('EmployeeFailed!');</script>";
+	    }
+	  }else{
+	    echo "<script>alert('Insert Failed!');</script>";
+	  }
+	  
+
+	  }*/
+?>

@@ -110,7 +110,9 @@ function consumable(){
 function nonConsumable(){
 	document.location.href='admin.php?option=manageproduct';
 }
-
+function year(id){
+    	document.location.href='admin.php?option=transactions&year='+id;
+}
 /* End of Index Functions */
 
 

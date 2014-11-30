@@ -358,6 +358,7 @@
 				  $cart = new UpdateModel();
 				  $cartID = $_GET['cartID'];
 				  $cart->removeCart($cartID);
+				  //$cart->
 				        require "viewer/cashier/product.php";
 				break;
 				case 'customercart':

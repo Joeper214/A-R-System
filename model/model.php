@@ -19,6 +19,18 @@
 	# Class Verify:
 	Class VerifyModel {
 
+	  public function checkModel($id){
+	    $query = mysql_query("SELECT model FROM nonconsumable
+                                  WHERE productID = $id
+                                  ");
+	    while($row = mysql_fetch_assoc($query)){
+	      return $row['model'];
+	    }
+	    
+	  }
+	
+
+
         public function isUsernameValid($username) {
 		
 	  $query = mysql_query("SELECT * FROM account WHERE username = '$username'");
@@ -241,6 +253,44 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	
 	# Class Get:
 	Class GetModel {
+	  public function browseby_month($month, $year){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction` t, person p
+                                  WHERE t.personID = p.personID
+                                  AND  dateRecorded like '%$year-$month%'                                                               ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	    
+	  }
+
+	  public function browseby_month_tech($month, $year){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction` t, person p
+                                  WHERE t.personID = p.personID
+                                  AND transactionType = 1
+                                  AND  dateRecorded like '%$year-$month%'                                                               ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	    
+	  }
+	  public function browseby_month_sales($month, $year){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction` t, person p
+                                  WHERE t.personID = p.personID
+                                  AND transactionType = 2
+                                  AND  dateRecorded like '%$year-$month%'                                                               ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	    
+	  }
+
+	  
 	  public function getNoteInfo($noteID){
 	    $rs = NULL;
 	    $query = mysql_query("SELECT * from note WHERE noteID={$noteID}");
@@ -441,17 +491,22 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	    return  $rs;
 	  }
 	  //Get transactions
+	  
 	  public function getSalesTransactions(){
 	    $rs = NULL;
 	    $query = mysql_query("SELECT * FROM `transaction` t, person p
                                   WHERE t.personID = p.personID
-                                  ORDER BY dateRecorded
+                                  AND DATE(`dateRecorded`) = DATE(NOW())
                                   ");
 	    while($row = mysql_fetch_array($query)){
 	      $rs[] = $row;
 	    }
 	    return $rs;
 	  }
+
+	  
+
+
 	  public function getTransaction_by_fname($key){
 	    $rs = NULL;
 	    $query = mysql_query("SELECT * FROM `transaction` t, person p
@@ -464,6 +519,21 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	    }
 	    return $rs;
 	  }
+
+	  public function getTransaction_by_id($id){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction` t, person p
+                                  WHERE t.personID = p.personID
+                                  AND p.personID = {$id}
+                                  ORDER BY dateRecorded
+                                  ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	  }
+
+
 
 	  public function getTech_by_fname($key){
 	    $rs = NULL;
@@ -684,16 +754,55 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	    }
 	    return $rs;
 	  }
-	  public function searchPerson_fname($key){
-	    $rs = NULL;
-	    $query = mysql_query("SELECT * FROM person p, employee e 
-WHERE p.personType=0 AND p.fname LIKE '%$key%' AND p.personID=e.personID");
+
+	  public function sortPerson($key){
+	    $query = mysql_query("SELECT *
+                 FROM employee e,
+                      person p
+                 WHERE p.personID = e.personID
+                 ORDER BY $key");
 	    
 	    while($row = mysql_fetch_array($query)) {
 	      $rs[] = $row;
 	    }
 	    return $rs;
 	  }
+
+
+	  public function getPersonby_id($personID){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT *
+                 FROM employee e,
+                      person p
+                 WHERE p.personID = {$personID}
+                 AND p.personID = e.personID
+                 ORDER BY p.lname;");
+
+	    while($row = mysql_fetch_array($query)) {
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	  }
+	  public function searchPersonID($key){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT DISTINCT personID, personID FROM person
+WHERE lname LIKE '%$key%' OR fname LIKE '%$key%' OR mname LIKE '%$key%' AND personType=0");
+	    
+	    while($row = mysql_fetch_assoc($query)) {
+	      return $row['personID']; 
+	    }
+	  }
+
+	  public function searchCustomerID($key){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT DISTINCT personID, personID FROM person
+WHERE lname LIKE '%$key%' OR fname LIKE '%$key%' OR mname LIKE '%$key%' AND personType=1");
+	    
+	    while($row = mysql_fetch_assoc($query)) {
+	      return $row['personID']; 
+	    }
+	  }
+
 
 
 	  public function searchPerson_mname($key){
@@ -1540,6 +1649,9 @@ WHERE product_id = '$productID'");
 		   return true;
 		 }
 		 mysql_close();
+	       }
+	       public function removeSelectedSerial(){
+		 
 	       }
 
 	}

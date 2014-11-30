@@ -1,5 +1,4 @@
 <?php 
-ob_start();
 include "../database/pdo/sanitizer.php";
 include "../database/pdo/db_connect.php";
 
@@ -16,13 +15,14 @@ class Commit{
   public function commitAction($action, $target){
     if($action=="add"){      
       $this->commitAddAction($target);      
-    }if($action=="edit"){
+    }else if($action=="edit"){
       $this->commitEditAction($target);
-    }if($action=="search"){
+    }else if($action=="search"){
       $this->commitSearchAction($target);
     }else{
       echo "No ACTION!";
     }
+    echo $target." ".$action;
   }
     
     
@@ -227,7 +227,7 @@ class Commit{
 			       ":mname"=>sanitize($_POST['mname']),
 			       ":lname"=>sanitize($_POST['lname']),
 			       ":address"=>sanitize($_POST['address']),
-			       ":number"=>sanitize($_POST['number']),
+			       ":number"=>sanitize($_POST['contact']),
 			       ":type"=>1
 			       );
 	
@@ -358,21 +358,28 @@ class Commit{
 	  $serviceParams = array(sanitize($_POST['serviceName']),
 				 sanitize($_POST['serviceRate']),
 				 $_POST['serviceID']);
-	  if($isExist){
-	    $msg = "{$_POST['serviceName']} Already Exists!!";
-	     header("Location: ../admin.php?option=manageservice&msg={$msg}");
-	  }else{
+	  if($_POST['oldSeviceName'] == $_POST['serviceName']){
 	    $isUpdated = $service->updateService($serviceParams);
 	    if($isUpdated){
 	      $msg = "{$_POST['serviceName']} edit success!";
-	     header("Location: ../admin.php?option=manageservice&msg={$msg}");
+	      header("Location: ../admin.php?option=manageservice&msg={$msg}");
 	    }else{
-	      $msg = "{$_POST['serviceName']} edit Failed!!";
-	     header("Location: ../admin.php?option=manageservice&msg={$msg}");
+		 $msg = "{$_POST['serviceName']} edit Failed!!";
+		 header("Location: ../admin.php?option=manageservice&msg={$msg}");
 	    }
-	    
+	  }else{
+	    if($isExist){
+	      $msg = "{$_POST['serviceName']} Already Exists!!";
+	      header("Location: ../admin.php?option=manageservice&msg={$msg}");
+	    }else{
+	      $isUpdated = $service->updateService($serviceParams);
+	      if($isUpdated){
+		$msg = "{$_POST['serviceName']} edit success!";
+		header("Location: ../admin.php?option=manageservice&msg={$msg}");
+	      }
+	    }
 	  }
-	}
+	  
 
       }else if($target == "brand"){
 	
@@ -402,7 +409,8 @@ class Commit{
 	}
 
 	
-      }else if($target == "category"){
+	}else if($target=="category"){
+	  echo "Edit Category";
 	require_once "../model/category.php";
 	$category = new Category();
 	
@@ -425,10 +433,12 @@ class Commit{
 	      $msg = "{$_POST['categoryName']} edit Failed!!";
 	      header("Location: ../admin.php?option=managecategory&msg={$msg}");
 	    }
-	    
+	    echo "aasd";
 	  }
+	    echo "aaswewe2d";
 	}	
-      }else if($target == "stock"){
+	echo "aaswewe2d";
+	}else if($target == "stock"){
 	if(isset($_POST['productID'])){
 	  if(isset($_POST['quantity']) && $_POST['quantity'] <= $_POST['curstock']){
 	  $date = new DateTime();
@@ -453,11 +463,13 @@ class Commit{
 	  header("location: ../admin.php?option=manageproduct&msg={$msg}");
 
 	  //invalid quantity
+	  }
 	}
-      }
       
-      }// Else
+	}// Else
+      }
     }
+
 
 private function commitSearchAction($target){
 

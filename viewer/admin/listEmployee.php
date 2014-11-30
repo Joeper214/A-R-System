@@ -1,17 +1,22 @@
+
 <?php
+$listEmployees = NULL;
 $access = new GetModel();
 
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
-  if($_POST['searchType'] == 1){
-     $listEmployees = $access -> searchPerson_fname($key);
-  }else if($_POST['searchType'] == 2){
-     $listEmployees = $access -> searchPerson_mname($key);
-  }else {
-     $listEmployees = $access -> searchPerson_lname($key);
-  }
-}else{
-$listEmployees = $access -> getAllPerson();
+  $personID = $access -> searchPersonID($key);
+     if($personID){
+       $listEmployees = $access -> getPersonby_id($personID);
+     }
+  
+}else if(isset($_POST['sort'])){
+  $key = $_POST['sortkey'];
+     $listEmployees = $access -> sortPerson($key);
+  
+}
+else{
+  $listEmployees = $access -> getAllPerson();
 }
 
 if($listEmployees){
@@ -82,7 +87,8 @@ else{
  ><em></em></a></td>
 
 
-</tr>
+
      <?php }}else{
-  echo "not Found!";
+  echo "<h3 style='color:red'> not Found! </h3>";
 } ?>
+</tr>

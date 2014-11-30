@@ -21,7 +21,7 @@ if(isset($_GET['productID'])){
 			<form method='POST'>
    <ul id='search'>
    <li><input type='text' class='searchinput' name='searchKey1' placeholder='Search Consumable'/></li>
-   <li><button  type='submit' name='searchConsume' autofocus/><a></a></button></li>
+   <li><button  type='submit' name='searchConsume' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </ul>
    </form>
 	</header>
@@ -29,7 +29,7 @@ if(isset($_GET['productID'])){
 	<table id='emplisttable'>
 		<tr>	
 		<th class='listtitle producttabletitle' id='tabletitle'>Product Name</th>
-			<th class='listtitle'>Brand Name</th>
+
 			<th class='listtitle'>Stock</th>
 			<th class='listtitle'>Price</th>
 			<th class='listtitle'>Mark-Defective</th>
@@ -53,7 +53,7 @@ if(isset($_GET['productID'])){
 		<form method='POST'>
    <ul id='search'>
    <li><input type='text' class='searchinput' name='searchKey2' placeholder='Search Non-Consumable'/></li>
-   <li><button  type='submit' name='searchNonConsume' autofocus/><a></a></button></li>
+   <li><button  type='submit' name='searchNonConsume' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </ul>
    </form>
 	</header>
@@ -61,14 +61,13 @@ if(isset($_GET['productID'])){
 	<table id='emplisttable'>
 		<tr>	
 <th class='listtitle producttabletitle' id='tabletitle'>Product Name</th>
-  <th class='listtitle'>Brand Name</th>
-  <th class='listtitle'>Stock</th>
-  <th class='listtitle'>Price</th>
-  <th class='listtitle'>Mark-Defective</th>
-  <th class='listtitle'>Add-Stock</th>
-  <th class='listtitle'>Edit </th>
-  <th class='listtitle'>View</th>
-  <th class='listtitle'>Status</th>
+
+			<th class='listtitle'>Stock</th>
+			<th class='listtitle'>Price</th>
+			<th class='listtitle'>Manage-Serials</th>
+			<th class='listtitle'>Edit </th>
+			<th class='listtitle'>View</th>
+			<th class='listtitle'>Status</th>
 		</tr>
 		<?php include "listProduct.php" ?>
 	

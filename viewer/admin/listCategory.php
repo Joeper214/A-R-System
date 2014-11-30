@@ -9,12 +9,12 @@ if(isset($_POST['search'])){
   
 }else{
   $query = mysql_query("SELECT * FROM category");
-$numCat = NULL;
+$numCat = 2;
 while($row = mysql_fetch_assoc($query)) {
   if($row['categoryName'] == "Accessories"){
-    $numCat = false;
+    $numCat = 1;
   }else{
-    $numCat = true;
+    $numCat = 2;
   }
   ?>
   
@@ -42,10 +42,20 @@ while($row = mysql_fetch_assoc($query)) {
 }
 
 
-
-if($numCat==true){
+if($numCat==2){
   $insert = new InsertModel();
-  $insert->insertIntoCategory("Accessories","For cunsumable type of category","1");
+  $query = mysql_query("SELECT COUNT(*) as Cats FROM category 
+WHERE categoryName='Accessories'");
+  while($row = mysql_fetch_assoc($query)) {
+    if($row['Cats'] > 0){
+
+    }else{
+      $insert->insertIntoCategory("Accessories","For cunsumable type of category","1");     
+      header("Refresh:0");
+    }
+
+
+  }
 }
 mysql_close();
 ?>

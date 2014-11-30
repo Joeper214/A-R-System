@@ -144,25 +144,32 @@ if(isset($_GET['personID'])){
 </div>
 
 <div id='adminright'>
-	<header id='accounttitle'>
+<header id='accounttitle'>
+
+
 		<p>List of all employee</p>
+
+</br>   </br>
+   	<ul id='search'>
    <form method='POST'>
-		<ul id='search'>
-                  <li> Search by:
-                     <select name="searchType" required="true">
-                        <option value="1">Firstname</option>
-                        <option value="2">Middlename</option>
-                        <option value="3">Lastname</option>
-                     </select>
-                  <li>
 			<li><input type='text' class='searchinput' name='searchKey' placeholder='Search Employee'/ required="true"></li>
-			<li><button  type='submit' name='search' autofocus/><a></a></button></li>
-		</ul>
+			<li><button  type='submit' style="height: 30px;  width: 40px;"  name='search' autofocus/><a></a></button></li>
 		</form>
-		 <ul></ul>
-		 <ul></ul>
-		<ul  id='addemployee'>
-			<li><a href='admin.php?option=manageemployee'/>&nbsp; ADD EMPLOYEE</a></li>
+   </ul>
+
+		<ul id='productfilter'>
+			<li>Sort by &nbsp; </li>
+
+			<li>
+                  <form method="POST">
+				<select name='sortkey' class='inputselectproductfilter' style="height: 35px;  ">
+					<option value="lname">Lastname</option>
+					<option value="fname">Firstname</option>
+					<option value="mname">Middlename</option>
+				</select>
+			</li>
+    <li><button type="submit" name="sort" style="height: 35px;  width: 40px;" ><a></a></button></form></li>
+
 		</ul>
 	</header>
 

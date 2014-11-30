@@ -34,8 +34,10 @@ if(isset($_GET['accountID'])){
 		<img id="employeeimg" src="images/photos/<?php echo $photo; ?>">
 	<input type="hidden" name="action" value="add">
 	  <input type="hidden" name="target" value="account">
+          <input type="text" disabled="true"  value="<?php echo $photo; ?>" >
 	  <input type="hidden" name="MAX_FILE_SIZE" value="41943040"/>
-	  <input type="file" name="f_attach" autofocus required/> 
+	  <input type="file" name="f_attach"/> 
+
 	</div>
 	<table id='userinfotable'>
 	  <tr>
@@ -94,18 +96,27 @@ if(isset($_GET['accountID'])){
 
 if(isset($_POST['save'])) {
 		$goTo = new UpdateModel();
-		$isInserted = $goTo -> updateEmployeePhoto($employeeID);
-			
-			if($isInserted) {
-				echo "<script>accountPictureUpdated()</script>";
-			}
+  if($_FILES['f_attach']['name'] == ""){
+
+   echo "<script>alert('No changes has been saved!')</script>";		  
+   echo "<script>goToAdmin()</script>";		   
+    
+    
+  }else{
+    $isInserted = $goTo -> updateEmployeePhoto($employeeID);
+
+   
+  }
 		
-		else {
-			echo "<script>alert('Error!');</script>";
-		}
+     if($isInserted) {
+       echo "<script>accountPictureUpdated()</script>";
+     }
+     else {
+       echo "<script>alert('Error!');</script>";
+     }
 	
 		
- 	}else if(isset($_POST['cancel'])){
-		echo "<script>goToAdmin()</script>";
-	}
+}else if(isset($_POST['cancel'])){
+  echo "<script>goToAdmin()</script>";
+}
 ?>

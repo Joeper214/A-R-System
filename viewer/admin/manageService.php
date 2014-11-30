@@ -28,7 +28,7 @@
 				<td>Service name</td>
 			</tr>
 			<tr>
-				<td><input onkeydown="return isAlpha(event.keyCode);" class='input' type='text' name='serviceName' placeholder='Service name' onfocus="if (this.placeholder == &#39;Service name&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Service name&#39;;}" autofocus required/></td>
+				<td><input  class='input' type='text' name='serviceName' placeholder='Service name' onfocus="if (this.placeholder == &#39;Service name&#39;) {this.placeholder = &#39;&#39;;}" onblur="if (this.placeholder == &#39;&#39;) {this.placeholder = &#39;Service name&#39;;}" autofocus required/></td>
 			</tr>
 			<tr>
 				<td>Service rate</td>
@@ -52,7 +52,7 @@
   <form method='POST'>
   <ul id='search'>
   <li><input type='text' class='searchinput' name='searchKey' placeholder='Search Service'/></li>
-  <li><button  type='submit' name='search' autofocus/><a></a></button></li>
+  <li><button  type='submit' name='search' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
   </ul>
   </form>
 	</header>

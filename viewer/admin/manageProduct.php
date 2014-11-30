@@ -29,7 +29,7 @@
 		<form method='POST'>
    <ul id='search'>
    <li><input type='text' class='searchinput' name='searchKey1' placeholder='Search Consumable'/></li>
-   <li><button  type='submit' name='searchConsume' autofocus/><a></a></button></li>
+   <li><button  type='submit' name='searchConsume' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </ul>
    </form>
 	</header>
@@ -37,7 +37,6 @@
 	<table id='emplisttable'>
 		<tr>	
 			<th class='listtitle producttabletitle' id='tabletitle'>Product Name</th>
-			<th class='listtitle' style="width: 20%" >Brand Name</th>
 			<th class='listtitle'>Stock</th> 
 			<th class='listtitle'>Price</th>
 			<th class='listtitle'>Mark-Defective</th>
@@ -62,8 +61,8 @@
                  </p>
 		<form method='POST'>
    <ul id='search'>
-   <li><input type='text' class='searchinput' name='searchKey2' placeholder='Search Non-Consumable'/></li>
-   <li><button  type='submit' name='searchNonConsume' autofocus/><a></a></button></li>
+   <li><input type='text' class='searchinput' name='searchKey2'  placeholder='Search Non-Consumable'/></li>
+   <li><button  type='submit' name='searchNonConsume' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </ul>
    </form>
 	</header>
@@ -71,8 +70,7 @@
 	<table id='emplisttable'>
 		<tr>	
 			<th class='listtitle producttabletitle' id='tabletitle'>Product Name</th>
-			<th class='listtitle'>Brand Name</th>
-			<th class='listtitle'>Model</th>
+
 			<th class='listtitle'>Stock</th>
 			<th class='listtitle'>Price</th>
 			<th class='listtitle'>Manage-Serials</th>

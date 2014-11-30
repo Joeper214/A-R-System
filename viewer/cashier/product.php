@@ -139,9 +139,7 @@ if(isset($_GET['fail'])){
 	<table id='productlisttable'>
 		<tr>
 			<th class='listtitle producttabletitle' id='tabletitle' style='width: 70%;'>Product name</th>
-			<th class='listtitle producttabletitle' id='tabletitle'
-style='width: 20%;'>Brand name</th>
-		<th class='listtitle producttabletitle' id='tabletitle'>Type</th>
+		
 			<th class='listtitle'>Price</th>
 			<th class='listtitle'>Stock</th>
 			<th class='listtitle'>Buy</th>

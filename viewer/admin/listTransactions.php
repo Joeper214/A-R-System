@@ -2,13 +2,21 @@
     $get = new GetModel();
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
-  if($_POST['searchType'] == 1){
+  
+  $personID = $get->searchCustomerID($key);
+  if($personID){
+    $transactions = $get->getTransaction_by_id($personID);
+  }else{
+    
+  }
+  
+  /* if($_POST['searchType'] == 1){
   $transactions = $get->getTransaction_by_fname($key);
   }else if($_POST['searchType'] ==2){
   $transactions = $get->getTransaction_by_mname($key);
   }else{
   $transactions = $get->getTransaction_by_lname($key);
-  }
+  } */
 }else if(isset($_POST['sort'])){
   if($_POST['sortkey'] == 1){
     $transactions = $get->getTransaction_ord_name();
@@ -17,11 +25,26 @@ if(isset($_POST['search'])){
   }else if($_POST['sortkey'] == 3){
     $transactions = $get->getTransaction_ord_price();
   }
-}else if(isset($_POST['transact_type'])){
+}else if(isset($_POST['transtype'])){
   if($_POST['transact_type'] == 1){
     $transactions = $get->getOnlySales();
   }else if($_POST['transact_type'] == 2){
     $transactions = $get->getOnlyTech();
+  }
+  
+}else if(isset($_POST['bmonth'])){
+  $month = $_POST['month'];
+  $year = $_POST['year'];  
+  if($month == 0){
+    $transactions = $get->getSalesTransactions(); 
+    
+  }else if($_POST['transact_type'] == 1){
+    $transactions = $get->browseby_month_tech($month,$year);
+  }else if($_POST['transact_type'] == 2){
+    $transactions = $get->browseby_month_sales($month,$year);
+  }else{
+
+    $transactions = $get->browseby_month($month,$year);
   }
   
 }else{
@@ -39,7 +62,7 @@ if($transactions){
 
      
 		<tr>	
-		   <td class='list' id='reportdate'><?php echo $date->format('m/d/Y'); ?></td>
+		   <td class='list' id='reportdate'><?php echo $date->format('F j, Y'); ?></td>
 <td class='list salesreportscustomername'><?php echo $transaction['lname']." ,"
                                 .$transaction['fname']; ?> </td>
 							      <td class='list bold'><?php if($transaction['transactionType'] == 1){

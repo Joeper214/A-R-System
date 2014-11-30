@@ -22,6 +22,9 @@
 	$address = $goTo -> getPersonAttributes(9, $personID);
 	$contactNumber = $goTo -> getPersonAttributes(10, $personID);
         $photo = $goTo -> getEmployeeAttributes(10, $employeeID);
+
+    $bday = new DateTime($birthDate);
+
 ?>
 
 <header id='accounttitle'>
@@ -60,7 +63,7 @@
 	</tr>
 	<tr>
 		<td>Birth date</td>
-		<td>:<input class='inputv' type='text' name='birthDate' disabled='true' value='<?php echo $birthDate; ?>'/></td>
+      <td>:<input class='inputv' type='text' name='birthDate' disabled='true' value='<?php echo $bday->format('F j, Y'); ?>'/></td>
 	</tr>
 	<tr>
 		<td>Birth place</td>

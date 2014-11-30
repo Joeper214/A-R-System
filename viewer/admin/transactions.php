@@ -5,40 +5,137 @@
    echo "<script> alert('{$_GET['success']}');</script>";
    
  }
+if(isset($_GET['year'])){
+
+}else{
+  $_GET['year'] = 0;
+}
+$month = NULL;
+
+if(isset($_POST['month'])){
+  if($_POST['month'] == 1){
+    $month = "January";
+  }else if($_POST['month'] == 2){
+     $month = "February";
+  }else if($_POST['month'] == 3){
+     $month = "March";
+  }else if($_POST['month'] == 4){
+     $month = "April";
+  }else if($_POST['month'] == 5){
+     $month = "May";
+  }else if($_POST['month'] == 6){
+     $month = "June";
+  }else if($_POST['month'] == 7){
+     $month = "July";
+  }else if($_POST['month'] == 8){
+ $month = "August";
+  }else if($_POST['month'] == 9){
+     $month = "September";
+  }else if($_POST['month'] == 10){
+     $month = "October";
+  }else if($_POST['month'] == 11){
+     $month = "November";
+  }else if($_POST['month'] == 12){
+     $month = "December";
+  }else{
+    $month = "Today";
+  }
+}else{
+  $month = "Today";
+}
 ?>
 	<header id='accounttitle'>
-		<p>Daily Transaction</p>
+		<p>Filter transactions</p>
 	</header>
 	<table>
 
-		<form method='POST'>
+
 			<tr>
+		<form method='POST'>
 				<td>Transaction type</td>
 			</tr>
 			<tr>
 				<td>
-					<select name='month' class='inputselect'>
-						<option>All</option>
+					<select name='transact_type' class='inputselect'>						<option value="0">All</option>
 						<option value="1">Sales</option>
 						<option value="2">Technical</option>
 					</select>
+                                      
 				</td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="transtype" type='submit' class='fullinputbutton' name='viewtransactions' value='VIEW TRANSACTIONS' /></td>
-			</tr>
-		</form>
-	</table>
-	</br>
-	<header id='accounttitle'>
-		<p>Daily Income</p>
-	</header>
-	<table>
-<?php 
-   $get = new GetModel();
-    $transactions = $get->getSalesTransactions();
+
+
+   <form method='POST'>
+   <tr>
+   <td>Browse by Month and Year</td>
+   </tr>
+   <tr>
+  <td><select name="month" class="inputselect">
+   <option <?php if ($_GET['year'] ==0 ){echo "selected='true'" ;}?> value="0" onclick="year(0)">Today</option>   
+   <option <?php if($_GET['year'] == 1){echo "selected='true'" ;}?> value="1"  onclick="year(1)">January</option>
+ <option <?php if($_GET['year'] == 2){echo "selected='true'" ;}?>value="2" onclick="year(2)">February</option>
+ <option <?php if($_GET['year'] == 3){echo "selected='true'" ;}?> value="3" onclick="year(3)">March</option>
+ <option  <?php if($_GET['year'] == 4){echo "selected='true'" ;}?>value="4" onclick="year(4)">April</option>
+ <option <?php if($_GET['year'] == 5){echo "selected='true'" ;}?> value="5" onclick="year(5)">May</option>
+ <option <?php if($_GET['year'] == 6){echo "selected='true'" ;}?> value="6" onclick="year(6)">June</option>
+ <option <?php if($_GET['year'] == 7){echo "selected='true'" ;}?> value="7" onclick="year(7)">July</option>
+ <option <?php if($_GET['year'] == 8){echo "selected='true'" ;}?> value="8" onclick="year(8)">August</option>
+ <option <?php if($_GET['year'] == 9){echo "selected='true'" ;}?> value="9" onclick="year(9)">September</option>
+ <option <?php if($_GET['year'] == 10){echo "selected='true'" ;}?> value="10" onclick="year(10)">October</option>
+ <option <?php if($_GET['year'] == 11){echo "selected='true'" ;}?> value="11" onclick="year(11)">November</option>
+ <option <?php if($_GET['year'] == 12){echo "selected='true'" ;}?> value="12" onclick="year(12)">December</option>
+
+   </select></td>
+   <?php 
+   if(isset($_GET['year']) && $_GET['year'] != 0){
+    include "year.php";
+   }
+    ?>
+
+</tr>
+<tr>
+<td colspan='2'><input name="bmonth" type='submit' class='fullinputbutton' name='viewtransactions' value='VIEW TRANSACTIONS' /></td>
+  </form>
+  </tr>
+  </tr>
+  </table>
+  </br>
+
+  <?php if(isset($_GET['year']) && $_GET['year'] != 0 && isset($_POST['month'])) {
+$get = new GetModel();
+$transactions = $get->browseby_month($_GET['year'],$_POST['year']);
 $grosssales = NULL;
 $techSales = NULL;
+$Sales = NULL;
+$y = $_GET['year'];
+$m = $_POST['year'];
+
+if($transactions){
+  foreach($transactions as $transaction){
+    //      print_r($transaction);
+    $date = new DateTime($transaction['dateRecorded']);
+    
+     $amount = number_format($transaction['amountDue'], 2, '.', ',');
+     $grosssales += $transaction['amountDue'];
+
+
+  if($transaction['transactionType'] == 2){
+    $techSales += $transaction['amountDue'];
+  }
+  if($transaction['transactionType'] == 1){
+    $Sales += $transaction['amountDue'];
+  }
+}
+}else{
+  
+}
+?>
+<?php 
+  }else{
+   $get = new GetModel();
+$transactions = $get->getSalesTransactions();
+$grosssales = NULL;
+$techSales = NULL;
+$Sales = NULL;
 if($transactions){
   foreach($transactions as $transaction){
     //      print_r($transaction);
@@ -51,19 +148,34 @@ if($transactions){
   if($transaction['transactionType'] == 2){
     $techSales += $transaction['amountDue'];
   }
+  if($transaction['transactionType'] == 1){
+    $Sales += $transaction['amountDue'];
+  }
 }else{
   
 }
+}
 ?>
+
+<header id='accounttitle'>
+  <p><?php if ($month){echo $month; }else{ echo "Daily";}?>'s Income</p>
+  </header>
+  <table>
 		<form method='POST'>
 			<tr>
-				<td>Today's current technical income</td>
+				<td><?php echo $month ?> Technical income</td>
 			</tr>
 			<tr>
 				<td><h1>P <?php echo number_format($techSales, 2, '.', ','); ?></h1></td>
 			</tr>
+<tr>
+				<td><?php echo $month ?> Sales income</td>
+			</tr>
 			<tr>
-				<td>Today's current gross sales</td>
+				<td><h1>P <?php echo number_format($Sales, 2, '.', ','); ?></h1></td>
+			</tr>
+			<tr>
+				<td><?php echo $month ?> Gross sales</td>
 			</tr>
 			<tr>
 		   <td><h1 style='margin: 0px; padding: 0px; font-size: 30px; color: #333;'>P <?php echo number_format($grosssales, 2, '.', ','); ?></h1></td>
@@ -88,7 +200,7 @@ if($transactions){
 <?php 
    $tech = new GetModel();
 $technicals = $tech->getTechnicals();
-if(isset($technicals)){
+if($technicals){
 foreach($technicals as $tech){
   $date = new DateTime($tech['serviceDate']);
   $person = $tech['lname'].", ".$tech['fname']." ".$tech['mname'];
@@ -111,13 +223,8 @@ foreach($technicals as $tech){
    </br>   </br>
    <ul id='search'>
 		<form method='POST'>
-    <li>Search by: <select name="searchType">
-    <option value="1">Firstname</option>
-    <option value="2">Middlename</option>
-    <option value="3">Lastname</option>
-    </select></li>
    <li><input type='text' class='searchinput' name='searchKey' placeholder='Search Customer'/></li>
-   <li><button  type='submit' name='search' autofocus/><a></a></button></li>
+   <li><button  type='submit' name='search' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </form>
    </ul>
 
@@ -126,13 +233,13 @@ foreach($technicals as $tech){
 
 			<li>
                   <form method="POST">
-				<select name='sortkey' class='inputselectproductfilter'>
+				<select name='sortkey' class='inputselectproductfilter' style="height: 35px;">
 					<option value="1">Name</option>
 					<option value="2">Type</option>
 					<option value="3">Price</option>
 				</select>
 			</li>
-    <li><button type="submit" name="sort"><a></a></button></form></li>
+    <li><button type="submit" name="sort" style="height: 35px;  width: 40px;"><a></a></button></form></li>
 
 		</ul>
 	</header>

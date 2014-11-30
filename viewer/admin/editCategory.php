@@ -16,7 +16,7 @@
 		<form method="POST" action="../mysystem/controller/exec_controller.php">
 	  <input type="hidden" name="action" value="edit">
 	  <input type="hidden" name="target" value="category">
-	  <input type="hidden" name="categoryID" value="<?php echo $categoryId; ?> ">
+	  <input type="hidden" name="categoryID" value="<?php echo $categoryId; ?>">
 
 			<tr>
 				<td>Category name</td>
@@ -46,7 +46,7 @@
 <form method='POST'>
 		<ul id='search'>
 			<li><input type='text' class='searchinput' name='searchKey' placeholder='Search Category'/></li>
-			<li><button  type='submit' name='search' autofocus/><a></a></button></li>
+			<li><button  type='submit' style="height: 30px;  width: 40px;" name='search' autofocus/><a></a></button></li>
 		</ul>
 		</form>
 	</header>

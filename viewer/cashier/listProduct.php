@@ -10,12 +10,19 @@ where b.brandID=p.brandID AND p.categoryID = $catID");
     $check = new VerifyModel();
   $isAdded = $check->isAddedToCart($row['productID'],$_SESSION['accountID']);
   if($isAdded){
-
+    
   }else{
 ?>
 	<tr>
       <?php $isEmpty = $row['categoryID']; ?>
-    <td class='list' id='productname'><?php echo $row['productName']; ?></td>
+    <td class='list' id='productname'><?php echo $row['brandName']." ".$row['productName']; 
+    if($row['productType'] == 1){
+      $model = $check->checkModel($row['productID']);
+      echo " ".$model;
+    }else{
+      
+    }
+?></td>
 									    <td class='list' id='price'>  <?php 
     //setlocale(LC_MONETARY, 'en_US');
     //    echo money_format('%(#10n', $row['price']);
@@ -67,13 +74,14 @@ while($row = mysql_fetch_assoc($query)){
   }else{
 ?>
 	<tr>
-    <td class='list' id='productname'><?php echo $row['productName']; ?></td>
-<td class='list'><?php echo $row['brandName']; ?></td>
-						     <td class='list'><?php if($row['productType'] == 1){
-      echo "Nonconsumable";
+      <td class='list' id='productname'><?php 
+      echo $row['brandName']." ".$row['productName'];
+   if($row['productType'] == 1){
+     $model = $check->checkModel($row['productID']);
+     echo " ".$model;
     }else{
-      echo "Consumable";
-    } ?></td>
+      
+    } ?>
     <td class='list' id='price'> <?php 
         setlocale(LC_MONETARY, 'en_US');
     //echo money_format('%(#10n', $row['price']);

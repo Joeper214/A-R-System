@@ -26,6 +26,7 @@ if(isset($_GET['serviceID'])){
   <form method='POST' action="../mysystem/controller/exec_controller.php">
    <input type="hidden" name="action" value="edit">
    <input type="hidden" name="target" value="service">
+   <input type="hidden" name="oldSeviceName" value="<?php echo $serviceName; ?>">
   
   <input type="hidden" value="<?php echo $serviceID; ?>" name="serviceID" >
 			<tr>
@@ -56,7 +57,7 @@ if(isset($_GET['serviceID'])){
 	<form method='POST'>
   <ul id='search'>
   <li><input type='text' class='searchinput' name='searchKey' placeholder='Search Consumable'/></li>
-  <li><button  type='submit' name='search' autofocus/><a></a></button></li>
+  <li><button  type='submit' name='search' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
   </ul>
   </form>
 	</header>

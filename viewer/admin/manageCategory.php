@@ -44,7 +44,7 @@
 	        <form method='POST'>
 		<ul id='search'>
 			<li><input type='text' class='searchinput' name='searchKey' placeholder='Search Category'/></li>
-			<li><button  type='submit' name='search' autofocus/><a></a></button></li>
+			<li><button  type='submit' name='search' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
 		</ul>
 		</form>
 	</header>

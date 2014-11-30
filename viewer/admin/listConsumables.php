@@ -14,8 +14,7 @@ while($row = mysql_fetch_assoc($query)){
 
 
 <tr class='trlist'>	
-			<td class='list' id='productname'><?php echo $row['productName'] ?></td>
-			<td class='list'><?php echo $row['brandName'] ?></td>
+			<td class='list' id='productname'><?php echo $row['brandName']." ".$row['productName'] ?></td>
 			<td class='list'><?php echo $row['stock'] ?>
     <?php if($row['productType'] == 1){
           }else{

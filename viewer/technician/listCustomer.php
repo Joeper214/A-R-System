@@ -1,18 +1,14 @@
-
 <?php 
+$get = new GetModel();
+  if(isset($_POST['search'])){
+    $key = $_POST['searchKey'];
+    $personID = $get->searchCustomerID($key);
 
-if(isset($_POST['search'])){
-  $key = $_POST['searchKey'];
-  if($_POST['searchType'] == 1){
-    $query = mysql_query("select * from person where personType=1 AND fname LIKE '%$key%'");
-  }else if($_POST['searchType'] == 2){
-    $query = mysql_query("select * from person where personType=1 AND mname LIKE '%$key%'");
+    $query = mysql_query("select * from person where personID = $personID");
   }else{
-    $query = mysql_query("select * from person where personType=1 AND lname LIKE '%$key%'");
+      $query = mysql_query("select * from person where personType=1");
+  
   }
-}else{
-  $query = mysql_query("select * from person where personType=1");
-}
 
    while($row = mysql_fetch_assoc($query)){ ?>
 		<tr>	

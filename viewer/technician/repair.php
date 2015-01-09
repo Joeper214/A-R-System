@@ -64,7 +64,7 @@
   <ul id='search'>
 <form method='POST'>
   <li><input type='text' class='searchinput' name='searchKey' placeholder='Search Service'/></li>
-  <li><button  type='submit' name='search' autofocus/><a></a></button></li>
+  <li><button  style="height: 30px;  width: 40px;" type='submit' name='search' autofocus/><a></a></button></li>
   </form>		
   </ul>
 
@@ -73,12 +73,12 @@
 
 			<li>
                   <form method="POST">
-				<select name='sortkey' class='inputselectproductfilter'>
+				<select style="height: 30px;;" ame='sortkey' class='inputselectproductfilter'>
 					<option value="1">Name</option>
 					<option value="3">Service Rate</option>
 				</select>
 			</li>
-    <li><button type="submit" name="sort"><a></a></button></form></li>
+    <li><button type="submit" style="height: 30px;  width: 40px;" name="sort"><a></a></button></form></li>
 
 		</ul>
 	</header>

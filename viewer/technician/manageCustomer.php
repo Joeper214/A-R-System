@@ -61,17 +61,10 @@ if(isset($_GET['msg'])){
 <div id='adminright'>
 	<header id='accounttitle'>
 		<p>List of all customers</p>
-	        <form method='POST'>
+           <form method='POST'>
 		<ul id='search'>
-                  <li> Search by:
-                     <select name="searchType" required="true">
-                        <option value="1">Firstname</option>
-                        <option value="2">Middlename</option>
-                        <option value="3">Lastname</option>
-                     </select>
-                  <li>
 			<li><input type='text' class='searchinput' name='searchKey' placeholder='Search Customer'/ required="true"></li>
-			<li><button  type='submit' name='search' autofocus/><a></a></button></li>
+			<li><button  style="height: 30px;  width: 40px;" type='submit' name='search' autofocus/><a></a></button></li>
 		</ul>
 		</form>
 	</header>

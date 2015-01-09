@@ -6,7 +6,7 @@
    <input type="hidden" name="target" value="transaction">
 
 	<header id='accounttitle' style='border-bottom: none;'>
-		<a class='back' href='cashier.php?option=customercart'><em>Back</em></a>
+		<a class='back' href='cashier.php?option=product'><em>Back</em></a>
 	</header>
 	<header id='accounttitle'>
 		<p>Customer Information</p>
@@ -18,7 +18,7 @@
 foreach($personInfo as $person){
 ?>
 	<table>
-
+<input type="hidden" name="attendant" value="<?php echo $_POST['transType']; ?>">
 <input type="hidden" name="fname" value="<?php echo $person['fname']; ?>">
 <input type="hidden" name="mname" value="<?php echo $person['mname']; ?>">
 <input type="hidden" name="lname" value="<?php echo $person['lname']; ?>">

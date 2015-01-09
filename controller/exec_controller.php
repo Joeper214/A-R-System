@@ -1,6 +1,8 @@
 <?php 
-include "../database/pdo/sanitizer.php";
+//ob_start();
 include "../database/pdo/db_connect.php";
+include "../database/pdo/sanitizer.php";
+
 
 
 
@@ -13,16 +15,19 @@ class Commit{
   }
   
   public function commitAction($action, $target){
-    if($action=="add"){      
+    if($action == "add"){      
       $this->commitAddAction($target);      
-    }else if($action=="edit"){
+    }
+    else if($action == "edit"){
       $this->commitEditAction($target);
-    }else if($action=="search"){
+      echo $target." ".$action;
+    }
+    else if($action=="search"){
       $this->commitSearchAction($target);
     }else{
       echo "No ACTION!";
     }
-    echo $target." ".$action;
+
   }
     
     
@@ -381,8 +386,9 @@ class Commit{
 	  }
 	  
 
+	}
       }else if($target == "brand"){
-	
+
 	require_once "../model/brand.php";
 	$brand = new Brand();
 	
@@ -409,7 +415,7 @@ class Commit{
 	}
 
 	
-	}else if($target=="category"){
+      }else if($target=="category"){
 	  echo "Edit Category";
 	require_once "../model/category.php";
 	$category = new Category();
@@ -466,9 +472,9 @@ class Commit{
 	  }
 	}
       
-	}// Else
-      }
+      }// Else
     }
+
 
 
 private function commitSearchAction($target){
@@ -498,7 +504,7 @@ private function commitSearchAction($target){
   $commit = new Commit();
   
   if(count($_POST) > 0){
-    $commit->commitAction(($_POST['action']), (($_POST['target'])));
+    $commit->commitAction(($_POST['action']), ($_POST['target']));
   }else if(count($_GET) >0 ){
     $commit->commitAction(($_GET['action']), ($_GET['target']));
   }

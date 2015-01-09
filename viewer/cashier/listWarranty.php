@@ -2,13 +2,9 @@
 
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
-  if($_POST['searchType'] == 1){
-    $listWarranty = $get->getWarranty_fname($key);
-  }else if($_POST['searchType'] == 2){
-    $listWarranty = $get->getWarranty_mname($key);
-  }else if($_POST['searchType'] == 3){
-    $listWarranty = $get->getWarranty_lname($key);
-  }
+  $personID = $get->searchCustomerID($key);
+
+  $listWarranty = $get->getWarranty_id($personID);
   
 }else if(isset($_POST['sort'])){
   if($_POST['sortkey'] == 1){

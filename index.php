@@ -52,77 +52,79 @@
 				</fieldset>
 				
 				<?php
-					if(isset($_POST['login'])) {
+if(isset($_POST['login'])) {
+  
+  require "model/model.php";
 						
-						require "model/model.php";
-						
-						$goTo = new ConnectModel();
-						$goTo -> connectToDatabase();
-							
-						$login = new UpdateModel();
-						$username = $_POST['username'];
-						$password = $_POST['password'];
-							
-						$query = mysql_query("SELECT * FROM account WHERE username = '$username' AND password = '$password'");
-							
-							if(mysql_num_rows($query) != 0) {
-		
-							  					
-							
-		while($i = mysql_fetch_assoc($query)) {
-
-		  
-
+  $goTo = new ConnectModel();
+  $goTo -> connectToDatabase();
+  
+  $login = new UpdateModel();
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  
+  $query = mysql_query("SELECT * FROM account WHERE username = '$username' AND password = '$password'");
+  
+  if(mysql_num_rows($query) != 0) {
+    
+    
+    
+    while($i = mysql_fetch_assoc($query)) {
+      
+      
+      
 $_SESSION['accountID']=$i['accountID'];									  								    									
-									# Account is of admin:
-									if($i['accountType'] == 1) {
-											
-									  $_SESSION['adminUsername'] = $username;
-										$_SESSION['adminPassword'] = $password;
-										$login->setLogin($_SESSION['accountID'],1);								
- echo "<script>goToAdmin()</script>";
+# Account is of admin:
+  if($i['accountType'] == 1) {
+      
+      $_SESSION['adminUsername'] = $username;
+      $_SESSION['adminPassword'] = $password;
 
-									} else {
-										
-										# Account type is cashier:
-										if($i['accountType'] == 2) {
-											
-											if($i['accountStatus'] == 1) {
-												
-												$_SESSION['cashierUsername'] = $username;
-												$_SESSION['cashierPassword'] = $password;
-												
-												$login->setLogin($_SESSION['accountID'],1);																	  echo "<script>goToCashier()</script>";
-											} else {
-												echo "<script>accountDisabled()</script>";
-											}
-										} else {
-											
-											# Account type is technician:
-											if($i['accountStatus'] == 1) {
-												
-												$_SESSION['technicianUsername'] = $username;
-												$_SESSION['technicianPassword'] = $password;
-											
-												$login->setLogin($_SESSION['accountID'],1);									      								echo "<script>goToTechnician()</script>";
-											} else {
-												echo "<script>accountDisabled()</script>";
-											}
-										}
-									}
-								}
-							} else {
-								echo "<script>accountDontExist()</script>";
-							}
-					}else if(isset($_POST['cancel'])) {
-						echo "<script>logout()</script>";
-					}
-				?>
-			</form>
-		</div>
-		<div id="footer">
-		  <p>copyright 2014 &reg; all right reserved</p>
-		</div>
+      echo "<script>goToAdmin()</script>";
+      
+    } else {
+      
+      # Account type is cashier:
+	if($i['accountType'] == 2) {
+	  
+	  if($i['accountStatus'] == 1) {
+	    
+	    $_SESSION['cashierUsername'] = $username;
+	    $_SESSION['cashierPassword'] = $password;
+	    $_SESSION['cashierID'] = $i['accountID'];
+	    echo "<script>goToCashier()</script>";
+	    
+	  } else {
+	    echo "<script>accountDisabled()</script>";
+	  }
+	} else {
+	  
+	  # Account type is technician:
+	    if($i['accountStatus'] == 1) {
+	  
+	  $_SESSION['technicianUsername'] = $username;
+	  $_SESSION['technicianPassword'] = $password;
+	  $_SESSION['technicianID'] = $i['accountID'];
+	  echo "<script>goToTechnician()</script>";
+	  
+	} else {
+	  echo "<script>accountDisabled()</script>";
+	}
+	}
+	}
+	}
+	} else {
+	  echo "<script>accountDontExist()</script>";
+	}
+	}else if(isset($_POST['cancel'])) {
+	  echo "<script>logout()</script>";
+	}
+	  ?>
+	  </form>
+	      </div>
+	      <div id="footer">
+	      <p>copyright 2014 &reg; all right reserved</p>
+					</div>
 	<div>
 </body>
 </html>

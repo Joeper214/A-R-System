@@ -12,10 +12,13 @@
 <head>
 	<title>Technician</title>
 
-	<link rel="stylesheet" type="text/css" href="style/jquery-ui.css"/>
-	<link rel="stylesheet" type="text/css" href="style/style.css"/>
-
-	<link rel="stylesheet" type="text/css" href="style/popUpStyle.css"> 
+<link rel="stylesheet" type="text/css" href="style/jquery-ui.css" media="screen" />
+	  <link rel="stylesheet" type="text/css" href="style/jquery-ui.css" media="print" />
+	  <link rel="stylesheet" type="text/css" href="style/style.css" media="screen"/>
+	  <link rel="stylesheet" type="text/css" href="style/style.css" media="print"/>
+	  
+	  <link rel="stylesheet" type="text/css" href="style/popUpStyle.css" media="screen" /> 
+	  <link rel="stylesheet" type="text/css" href="style/popUpStyle.css" media="print" />  
 	  <script type="text/javascript" src="script/jQuery/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="script/jQuery/jquery-ui.js"></script> 
 	<script type="text/javascript" src="script/javascript.js"></script>

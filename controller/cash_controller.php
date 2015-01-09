@@ -86,6 +86,7 @@ class Commit{
 	  $isAdded = $cart->addToCart($cart_params);
 	  if($isAdded){
           $msg = "Product addded to cart!";
+	  //print_r($cart_params);
 	  header("location: ../cashier.php?option=product&success={$msg}");
 	  }else{
           $msg = "Add failed!";
@@ -119,11 +120,12 @@ class Commit{
 	if($personID){
 	  require_once "../model/cart.php";
 	  $cart = new Cart();
-	    $cart_params = array(":accountID"=>$_SESSION['accountID'],
+	    $cart_params = array(":accountID"=>$_POST['attendant'],
 				 ":personID"=>$personID,
 				 ":transType"=>1,
 				 ":date"=>$today->format('Y-m-d'),
 				 ":amount"=>$_POST['total']);
+	    print_r($cart_params);
 	    $addtoCart = $cart->addTransaction($cart_params);
 	    
 	    $rows = $cart->getLatest();
@@ -162,8 +164,8 @@ class Commit{
 
 	    
 	  
-	    $msg = "Transaction Successful!";
-	  header("location: ../cashier.php?option=managecustomer&success={$msg}");
+	  $msg = "Transaction Successful!";
+	  header("location: ../cashier.php?option=product&success={$msg}");
 	}else{
 	  //insert new person
 	  $newPerson = $account->addPerson($person_params);
@@ -172,7 +174,7 @@ class Commit{
 	    foreach($rows as $row){
 	      $newpersonID = $row['max(personID)'];
 	    }
-	    $cart_params = array(":accountID"=>$_SESSION['accountID'],
+	    $cart_params = array(":accountID"=>$_POST['attendant'],
 				 ":personID"=>$newpersonID,
 				 ":transType"=>1,
 				 ":date"=>$today->format('Y-m-d'),
@@ -217,15 +219,15 @@ class Commit{
 	    }
 	    
 	  
-	    	    $msg = "Transaction Successful!";
-	      header("location: ../cashier.php?option=managecustomer&success={$msg}");
+	    $msg = "Transaction Successful!";
+	    header("location: ../cashier.php?option=managecustomer&success={$msg}");
 	  }
 	  $msg = "Add Person Failed!";
 	  header("location: ../cashier.php?option=managecustomer&fail={$msg}");
 	}
       }
       $msg = "Transaction Successful!";
-      header("location: ../cashier.php?option=managecustomer&success={$msg}");
+      header("location: ../cashier.php?option=product&success={$msg}");
     
     }else if($target == "technical"){
       $today = new DateTime();
@@ -324,15 +326,15 @@ class Commit{
 	$isInserted = $warranty->insertReplaced($serial_replace);
 	
 	if($isInserted){
-	  //$msg = "Serial Successfully Replaced and warranty status is void!";
-	  //header("location: ../cashier.php?option=warranty&msg={$msg}");
+	  $msg = "Serial Successfully Replaced and warranty status is void!";
+	  header("location: ../cashier.php?option=warranty&msg={$msg}");
 	}else{
-	  // $msg = "Serial replace failed!";
-	  // header("location: ../cashier.php?option=warranty&fail={$msg}");
+	   $msg = "Serial replace failed!";
+	   header("location: ../cashier.php?option=warranty&fail={$msg}");
 	}
       }else{
-	//	$msg = "Serial replace failed!";
-	// header("location: ../cashier.php?option=warranty&fail={$msg}");
+	$msg = "Serial replace failed!";
+	header("location: ../cashier.php?option=warranty&fail={$msg}");
       }
     }
   }//end Replace

@@ -97,6 +97,7 @@ if(isset($_GET['fail'])){
 	</table>
     <?php if(isset($_SESSION['customerID'])){ ?>
 <form method='POST' action="cashier.php?option=customerprocesspayment" style='margin: 0 0 20px 0;'>
+<input type="hidden" name="transType" value="<?php echo $_SESSION['cashierID'];?>">
     <?php }else{?>
 <form method='POST' style='margin: 0 0 20px 0;'>
     <?php } ?>
@@ -118,7 +119,7 @@ if(isset($_GET['fail'])){
 		<ul id='search'>
 	          <form method='POST'>
 			<li><input type='text' class='searchinput' name='searchKey' placeholder='Search Product'/ required="true"></li>
-			<li><button  type='submit' name='search' autofocus/><a></a></button></li>
+			<li><button  style="height: 30px;  width: 40px;" type='submit' name='search' autofocus/><a></a></button></li>
 		</form>
 		</ul>
 
@@ -131,7 +132,7 @@ if(isset($_GET['fail'])){
 					<option value="2" >Price</option>
 				</select>
 			</li>
-			<li><button type="submit" name="sort"><a></a></button></li>
+			<li><button type="submit" style="height: 30px;  width: 40px;" name="sort"><a></a></button></li>
                  </form>
 		</ul>
 	</header>

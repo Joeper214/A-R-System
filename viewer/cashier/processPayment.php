@@ -3,6 +3,7 @@
 <form method='POST' action='../mysystem/controller/cash_controller.php'>
    <input type="hidden" name="action" value="add">
    <input type="hidden" name="target" value="transaction">
+   <input type="hidden" name="attendant" value="<?php echo $_SESSION['cashierID'];?>">
 	<div id='adminleft'>
 		<header id='accounttitle' style='border-bottom: none;'>
 			<a class='back' style='margin-bottom: -10px;' href='cashier.php?option=cart'><em>Back</em></a>
@@ -115,7 +116,7 @@
 				<td class='bold'>Attendant</td>
 			</tr>
 			<tr>
-				<td><input class='input' type='text' disabled='true' name='fnameasd' value='<?php echo $_SESSION['completeName'];?>' autofocus/></td>
+				<td><input class='input' type='text' disabled='true' name='fnameasd' value='<?php echo $_SESSION['cashierName'];?>' autofocus/></td>
 			</tr>
 			<tr>
 				<td class='bold'>Transaction Date</td>

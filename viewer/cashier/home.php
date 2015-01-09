@@ -10,7 +10,7 @@ $userInfo = $goTo -> getUserInfo_by_id($accountID);
 
 foreach($userInfo as $user){
   $bday = new DateTime($user['birthDate']);
-  $_SESSION['completeName'] = $user['fname']." ".$user['mname']." ".$user['lname'];
+  $_SESSION['cashierName'] = $user['fname']." ".$user['mname']." ".$user['lname'];
 ?>
 
 <header id='accounttitle'>

@@ -357,6 +357,13 @@
 			        case 'removeCart':
 				  $cart = new UpdateModel();
 				  $cartID = $_GET['cartID'];
+				  $sel_serials = $cart->get_selected_serials($cartID);
+				  if ($sel_serials){
+				  foreach($sel_serials as $serial){
+				    $cart->return_serial($serial['serialID']);
+				  }
+				  }
+
 				  $cart->removeCart($cartID);
 				  //$cart->
 				        require "viewer/cashier/product.php";

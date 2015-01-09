@@ -31,13 +31,9 @@ if(isset($_GET['msg'])){
 		<p>Sold products</p>
 	        <ul id='search'>
 		<form method='POST'>
-    <li>Search by: <select name="searchType">
-    <option value="1">Firstname</option>
-    <option value="2">Middlename</option>
-    <option value="3">Lastname</option>
-    </select></li>
+    <li>Search by: </li>
    <li><input type='text' class='searchinput' name='searchKey' placeholder='Search Customer'/></li>
-   <li><button  type='submit' name='search' autofocus/><a></a></button></li>
+   <li><button  type='submit' name='search' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </form>
    </ul>
 	        <ul id='productfilter'>
@@ -51,7 +47,7 @@ if(isset($_GET['msg'])){
 					<option value="3">PurchaseDate</option>
 				</select>
 			</li>
-    <li><button type="submit" name="sort"><a></a></button></form></li>
+    <li><button style="height: 30px;  width: 40px;" type="submit" name="sort"><a></a></button></form></li>
 
 		</ul>
 	</header>

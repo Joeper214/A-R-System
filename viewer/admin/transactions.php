@@ -64,22 +64,21 @@ if(isset($_POST['month'])){
 				</td>
 
 
-   <form method='POST'>
    <tr>
    <td>Browse by Month and Year</td>
    </tr>
    <tr>
   <td><select name="month" class="inputselect">
    <option <?php if ($_GET['year'] ==0 ){echo "selected='true'" ;}?> value="0" onclick="year(0)">Today</option>   
-   <option <?php if($_GET['year'] == 1){echo "selected='true'" ;}?> value="1"  onclick="year(1)">January</option>
- <option <?php if($_GET['year'] == 2){echo "selected='true'" ;}?>value="2" onclick="year(2)">February</option>
- <option <?php if($_GET['year'] == 3){echo "selected='true'" ;}?> value="3" onclick="year(3)">March</option>
- <option  <?php if($_GET['year'] == 4){echo "selected='true'" ;}?>value="4" onclick="year(4)">April</option>
- <option <?php if($_GET['year'] == 5){echo "selected='true'" ;}?> value="5" onclick="year(5)">May</option>
- <option <?php if($_GET['year'] == 6){echo "selected='true'" ;}?> value="6" onclick="year(6)">June</option>
- <option <?php if($_GET['year'] == 7){echo "selected='true'" ;}?> value="7" onclick="year(7)">July</option>
- <option <?php if($_GET['year'] == 8){echo "selected='true'" ;}?> value="8" onclick="year(8)">August</option>
- <option <?php if($_GET['year'] == 9){echo "selected='true'" ;}?> value="9" onclick="year(9)">September</option>
+   <option <?php if($_GET['year'] == 1){echo "selected='true'" ;}?> value="01"  onclick="year(1)">January</option>
+ <option <?php if($_GET['year'] == 2){echo "selected='true'" ;}?>value="02" onclick="year(2)">February</option>
+ <option <?php if($_GET['year'] == 3){echo "selected='true'" ;}?> value="03" onclick="year(3)">March</option>
+ <option  <?php if($_GET['year'] == 4){echo "selected='true'" ;}?>value="04" onclick="year(4)">April</option>
+ <option <?php if($_GET['year'] == 5){echo "selected='true'" ;}?> value="05" onclick="year(5)">May</option>
+ <option <?php if($_GET['year'] == 6){echo "selected='true'" ;}?> value="06" onclick="year(6)">June</option>
+ <option <?php if($_GET['year'] == 7){echo "selected='true'" ;}?> value="07" onclick="year(7)">July</option>
+ <option <?php if($_GET['year'] == 8){echo "selected='true'" ;}?> value="08" onclick="year(8)">August</option>
+ <option <?php if($_GET['year'] == 9){echo "selected='true'" ;}?> value="09" onclick="year(9)">September</option>
  <option <?php if($_GET['year'] == 10){echo "selected='true'" ;}?> value="10" onclick="year(10)">October</option>
  <option <?php if($_GET['year'] == 11){echo "selected='true'" ;}?> value="11" onclick="year(11)">November</option>
  <option <?php if($_GET['year'] == 12){echo "selected='true'" ;}?> value="12" onclick="year(12)">December</option>
@@ -100,9 +99,9 @@ if(isset($_POST['month'])){
   </table>
   </br>
 
-  <?php if(isset($_GET['year']) && $_GET['year'] != 0 && isset($_POST['month'])) {
+  <?php if(isset($_POST['year']) && $_GET['year'] != 0 && isset($_POST['month'])) {
 $get = new GetModel();
-$transactions = $get->browseby_month($_GET['year'],$_POST['year']);
+$transactions = $get->browseby_month($_POST['month'],$_POST['year']);
 $grosssales = NULL;
 $techSales = NULL;
 $Sales = NULL;

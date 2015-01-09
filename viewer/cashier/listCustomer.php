@@ -1,17 +1,14 @@
    <?php 
+$get = new GetModel();
   if(isset($_POST['search'])){
     $key = $_POST['searchKey'];
-    if($_POST['searchType'] == 1){
-      $query = mysql_query("select * from person where personType=1 AND fname LIKE '%$key%'");
-    }else if($_POST['searchType'] == 2){
-      $query = mysql_query("select * from person where personType=1 AND mname LIKE '%$key%'");
-    }else{
-      $query = mysql_query("select * from person where personType=1 AND lname LIKE '%$key%'");
-    }
-  }else{
-    $query = mysql_query("select * from person where personType=1");
-  }
+    $personID = $get->searchCustomerID($key);
 
+    $query = mysql_query("select * from person where personID = $personID");
+  }else{
+      $query = mysql_query("select * from person where personType=1");
+  }
+if($query){
    while($row = mysql_fetch_assoc($query)){ ?>
 		<tr>	
 			<td class='list' id='customername'>
@@ -20,4 +17,6 @@
 			<td class='list'><a class='view' href='cashier.php?option=viewcustomer&id=<?php echo $row['personID'];?>'><em>View</em></a></td>
 			<td class='list'><a class='sales' href='cashier.php?option=product&id=<?php echo $row['personID'];?>'><em>Sales</em></a></td>
 		</tr>
-   <?php }?>
+       <?php }}else{ ?>
+     <tr><td class="list">No added yet.</td></tr>
+       <?php } ?>

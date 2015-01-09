@@ -9,6 +9,7 @@
 <form method='POST' action='../mysystem/controller/cash_controller.php'>
    <input type="hidden" name="action" value="add">
    <input type="hidden" name="target" value="technical">
+   <input type="hidden" name="attendant" value="<?php $_GET['accID']; ?>">
 
 <?php 
    if(isset($_GET['personID'])&&isset($_GET['accID'])){

@@ -87,7 +87,7 @@ type='text' name='serialNumber' placeholder='Serial Number' onfocus="if (this.pl
 		    $isUpdated = $edit->updateSerial($_POST['edit'],$serialNumber);
 		    //$reflectStock = $edit->updateStock($pID);
 			  $msg = "{$serialNumber} has been updated!";
-				header("location: admin.php?option=editserial&productID={$pID}&msg={$msg}");
+			  header("location: admin.php?option=editserial&productID={$pID}&msg={$msg}");
 		    
 		  }else
 

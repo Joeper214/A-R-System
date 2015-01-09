@@ -4,6 +4,7 @@ if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
   
   $personID = $get->searchCustomerID($key);
+
   if($personID){
     $transactions = $get->getTransaction_by_id($personID);
   }else{
@@ -34,7 +35,11 @@ if(isset($_POST['search'])){
   
 }else if(isset($_POST['bmonth'])){
   $month = $_POST['month'];
-  $year = $_POST['year'];  
+  if(isset($_POST['year'])){
+    $year = $_POST['year'];  
+  }else{
+    $year = 0;
+  }
   if($month == 0){
     $transactions = $get->getSalesTransactions(); 
     
@@ -43,7 +48,8 @@ if(isset($_POST['search'])){
   }else if($_POST['transact_type'] == 2){
     $transactions = $get->browseby_month_sales($month,$year);
   }else{
-
+    //echo "<script>alert('$month')</script>";
+    //echo "<script>alert('$year')</script>";
     $transactions = $get->browseby_month($month,$year);
   }
   

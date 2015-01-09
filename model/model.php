@@ -28,12 +28,25 @@
 	    }
 	    
 	  }
+
+	  public function checkSerial($id){
+	    $query = mysql_query("SELECT * FROM selectedserial WHERE serialID= '$id'
+ AND selectedStatus=0");
+	    if(mysql_num_rows($query) == 0) {
+	    
+	      return false;
+	    } else {
+	      
+	      return true;
+	    }
+	  }
 	
 
 
         public function isUsernameValid($username) {
 		
-	  $query = mysql_query("SELECT * FROM account WHERE username = '$username'");
+	  $query = mysql_query("SELECT * FROM account 
+         WHERE username = '$username'");
 	  
 	  if(mysql_num_rows($query) != 0) {
 	    
@@ -63,12 +76,14 @@
                                   AND accountID = {$a_id}
                                   AND processStatus != 1
                                   ");
-	      if(mysql_num_rows($query) != 0){
-		return true;
-	      }else{
-		return false;
+	  if($query){
+	    if(mysql_num_rows($query) != 0){
+	      return true;
+	    }else{
+	      return false;
 	      }
-	    
+	  }
+	  
 	  }
 	public function isSerialExist($serialNumber) {
 		
@@ -306,11 +321,15 @@ public function insertSerial($serialNumber, $productID, $availability) {
                       AND t.serviceID = s.serviceID 
                       AND d.deviceID = t.deviceID 
                       AND techStatus = 0 GROUP BY p.personID ");
-
-	    while($row = mysql_fetch_assoc($query)){
-	      $rs[] = $row;
+	    if($query){
+	      while($row = mysql_fetch_assoc($query)){
+		$rs[] = $row;
+	      }
+	      return $rs;
+	    }else{
+	      return null;
 	    }
-	    return $rs;
+
 	  }
 	    
 	
@@ -437,10 +456,10 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	    return $rs;
 	  }
 
-	  public function getWarranty_fname($key){
+	  public function getWarranty_id($id){
 	    $rs = NULL;
 	    $query = mysql_query("SELECT * from warranty w, selectedserial s, serial a,person p
-                                  WHERE p.fname LIKE '%$key%'
+                                  WHERE p.personID = '$id'
                                   AND w.selectedSerialID = s.selectedSerialID
                                   AND w.personID = p.personID
                                   AND s.serialID = a.serialID
@@ -796,7 +815,7 @@ WHERE lname LIKE '%$key%' OR fname LIKE '%$key%' OR mname LIKE '%$key%' AND pers
 	  public function searchCustomerID($key){
 	    $rs = NULL;
 	    $query = mysql_query("SELECT DISTINCT personID, personID FROM person
-WHERE lname LIKE '%$key%' OR fname LIKE '%$key%' OR mname LIKE '%$key%' AND personType=1");
+WHERE personType=1 AND lname LIKE '%$key%' OR fname LIKE '%$key%' OR mname LIKE '%$key%'");
 	    
 	    while($row = mysql_fetch_assoc($query)) {
 	      return $row['personID']; 
@@ -1050,32 +1069,35 @@ WHERE p.personType=0 AND p.lname LIKE '%$key%' AND p.personID=e.personID");
 		}
 	
 		public function getPersonAttributes($option, $personID) {
-		
+		  $query = NULL;
 			$query = mysql_query("SELECT * FROM person WHERE personID = '$personID'");
-		
-			while($row = mysql_fetch_assoc($query)) {
-			
-				switch($option) {
-					case 1:
-						return $row['fname'];
-					break;
-					
+			if($query){
+			  while($row = mysql_fetch_assoc($query)) {
+			    
+			    switch($option) {
+			    case 1:
+			      return $row['fname'];
+			      break;
+			      
 					case 2:
-						return $row['mname'];
+					  return $row['mname'];
+					  break;
+					  
+			    case 3:
+			      return $row['lname'];
+			      break;
+			      
+			    case 9:
+			      return $row['address'];
+			      break;
+			      
+			    default:
+			      return $row['contactNumber'];
 					break;
-					
-					case 3:
-						return $row['lname'];
-					break;
-					
-					case 9:
-						return $row['address'];
-					break;
-					
-					default:
-						return $row['contactNumber'];
-					break;
-				}
+			    }
+			  }
+			}else{
+			  return NULL;
 			}
 		}
 	
@@ -1212,14 +1234,14 @@ WHERE p.personType=0 AND p.lname LIKE '%$key%' AND p.personID=e.personID");
 				
 					case 1:
 						return $row['categoryName'];
-					break;
+						break;
 					case 2:
 						return $row['categoryDescription'];
-					break;
-				case 3:
-				  return $row['categoryStatus'];
-				  break;
-					default:
+						break;
+				        case 3:
+					        return $row['categoryStatus'];
+						break;
+				        default:
 						
 					break;
 				}
@@ -1635,6 +1657,32 @@ WHERE product_id = '$productID'");
 		 $query = mysql_query("DELETE FROM technical WHERE technicalID = '$id'");
 		 
 		 if($query) {
+		   return true;
+		 }
+		 mysql_close();
+	       }
+	       
+	       public function get_selected_serials($id){
+		 $rs = NULL;
+		 $goTo = new ConnectModel();
+		 $goTo -> connectToDatabase();
+		 $query = mysql_query("select * from selectedserial WHERE cartDetailID = '$id'");
+		 
+		 while($row = mysql_fetch_array($query)){
+		   $rs[] = $row;
+		 }
+		 return $rs;
+
+
+		 
+	       }
+	       public function return_serial($id){
+		 $goTo = new ConnectModel();
+		 $goTo -> connectToDatabase();
+		 
+		 $query = mysql_query("UPDATE serial SET isTaken=0 WHERE serialID = '$id' ");
+		 
+		 if($query){
 		   return true;
 		 }
 		 mysql_close();

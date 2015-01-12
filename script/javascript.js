@@ -12,6 +12,22 @@ function charOnly(e){
 }
 
 
+function printReport(){
+    var data = {trans_type : $("#trans_type").val(),
+	       month : $("#month").val()}
+
+
+
+    $.get('/url', data, function(rs){
+	rs = new String(rs).trim();
+	var myWindow = window.open("", "my div", "height=600,width=900");
+	myWindow.document.write(rs);
+	myWindow.print();
+	myWindow.close();
+    });
+}
+
+
 
 function isAlpha(keyCode)
 {

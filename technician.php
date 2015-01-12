@@ -20,9 +20,10 @@
 	  <link rel="stylesheet" type="text/css" href="style/popUpStyle.css" media="screen" /> 
 	  <link rel="stylesheet" type="text/css" href="style/popUpStyle.css" media="print" />  
 	  <script type="text/javascript" src="script/jQuery/jquery-1.9.1.js"></script>
-        <script type="text/javascript" src="script/jQuery/jquery-ui.js"></script> 
-	<script type="text/javascript" src="script/javascript.js"></script>
-	<script type="text/javascript" src="script/bootstrap.js"></script>
+	  <script type="text/javascript" src="script/jQuery/jquery-ui.js"></script> 
+	  <script type="text/javascript" src="script/javascript.js"></script>
+	  <script type="text/javascript" src="script/bootstrap.js"></script>
+	  <script type="text/javascript" src="script/js/jquery.PrintArea.js"></script> 
 
 
 </head>

@@ -33,10 +33,13 @@ if(isset($_POST['search'])){
     $transactions = $get->getOnlyTech();
   }
   
-}else if(isset($_POST['bmonth'])){
+}else if(isset($_POST['bmonth'])||(isset($_GET['month']))||isset($_POST[])){
   $month = $_POST['month'];
-  if(isset($_POST['year'])){
+  $month = $_GET['month'];
+  
+  if(isset($_POST['year'])||isset($_GET['year'])){
     $year = $_POST['year'];  
+    $year = $_GET['year'];  
   }else{
     $year = 0;
   }

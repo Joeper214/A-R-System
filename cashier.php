@@ -23,8 +23,9 @@
 
 	  <script type="text/javascript" src="script/jQuery/jquery-1.9.1.js"></script>
 	  <script type="text/javascript" src="script/jQuery/jquery-ui.js"></script> 
-	<script type="text/javascript" src="script/javascript.js"></script>
-	<script type="text/javascript" src="script/moveable.js"></script>
+	  <script type="text/javascript" src="script/javascript.js"></script>
+	  <script type="text/javascript" src="script/moveable.js"></script>
+	  <script type="text/javascript" src="script/js/jquery.PrintArea.js"></script> 
 
 	<link rel="shortcut icon" href="images/icon.ico">
 

@@ -271,10 +271,9 @@
 				break;
 				
 				case 'logout':
-		$login = new UpdateModel();
-		$login->setLogin($_SESSION['accountID'],0);								
-					session_destroy();
-					echo "<script>logout()</script>";
+				  $login = new UpdateModel();
+				  session_destroy();
+				  echo "<script>logout()</script>";
 				break;
 				
 				case 'viewEmployee':
@@ -304,6 +303,11 @@
 				case 'transactions':
 					require "viewer/admin/transactions.php";
 				break;
+				
+				case 'print':
+					require "viewer/admin/print.php";
+				break;
+
 				
 				case 'salesdetail':
 					require "viewer/admin/salesDetail.php";
@@ -473,11 +477,11 @@
 			switch($option) {
 				
 				case 'managecustomer':
-					require "viewer/technician/manageCustomer.php";
+				  require "viewer/technician/manageCustomer.php";
 				break;
 
 			case 'deleteService':
-
+			  
 			  $ID = $_GET['id'];
 			  
 			  $goTo = new UpdateModel();
@@ -551,11 +555,8 @@
 				break;
 				
 				case 'logout':
-
-		$login = new UpdateModel();
-		$login->setLogin($_SESSION['accountID'],0);
-					session_destroy();
-					echo "<script>logout()</script>";
+				  session_destroy();
+				  echo "<script>logout()</script>";
 				break;
 				
 				default:

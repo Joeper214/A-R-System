@@ -56,7 +56,7 @@ if(isset($_POST['month'])){
 			</tr>
 			<tr>
 				<td>
-					<select name='transact_type' class='inputselect'>						<option value="0">All</option>
+					<select id="trans_type" name='transact_type' class='inputselect'>						<option value="0">All</option>
 						<option value="1">Sales</option>
 						<option value="2">Technical</option>
 					</select>
@@ -68,7 +68,7 @@ if(isset($_POST['month'])){
    <td>Browse by Month and Year</td>
    </tr>
    <tr>
-  <td><select name="month" class="inputselect">
+  <td><select id="month" name="month" class="inputselect">
    <option <?php if ($_GET['year'] ==0 ){echo "selected='true'" ;}?> value="0" onclick="year(0)">Today</option>   
    <option <?php if($_GET['year'] == 1){echo "selected='true'" ;}?> value="01"  onclick="year(1)">January</option>
  <option <?php if($_GET['year'] == 2){echo "selected='true'" ;}?>value="02" onclick="year(2)">February</option>
@@ -255,9 +255,16 @@ foreach($technicals as $tech){
 										    
     <?php include "listTransactions.php"; ?>
 	</table>
+<div id="print_test" style="display:none">
+<p>wewewewe testststst</p>
+</div>
+
 <form method='POST'>
-		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='PRINT REPORT' onclick="printReport()" />
+		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='PRINT REPORT' onclick="$('#placeholder').printArea();" />
 	</form>
 
 </div>
 <div id='clear'></div>
+
+
+

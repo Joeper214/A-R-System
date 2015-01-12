@@ -92,11 +92,6 @@ if($transactions){
 ?>
 			   </td>
 
-<?php if($transaction['transactionType'] == 1){ ?>
-	<td class='list'><a class='view' href='admin.php?option=salesdetail&transID=<?php echo $transaction['transactionID'];?>'><em>view detail</em></a></td>
-<?php       }else{ ?>
-        <td  class='list'><a class='view' href='admin.php?option=technicaldetail&transID=<?php echo $transaction['transactionID'];?>'></td>
-				<?php       } ?>
 		
 		</tr>
 		<tr>	

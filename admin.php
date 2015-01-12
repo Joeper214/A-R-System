@@ -9,6 +9,7 @@
 	$goTo = new ConnectModel();
 	$goTo -> connectToDatabase();
 ?>
+
 <html>
 <head>
 	<title>Administrator</title>
@@ -32,6 +33,9 @@
 
 </head>
 <body onload="javascript:popUpHide('popUpContainer','popUpBackground');">
+	  <?php if(isset($_GET['option']) && ($_GET['option'] == "print")){
+	  
+	}else{?>
 <div id="wrapper">
 	<div id="Header">
 	  <div id="banner"></div>
@@ -56,7 +60,7 @@
             <li><a href="admin.php?option=transactions">VIEW TRANSACTIONS</a></li>
 			<li><a href="admin.php?option=reports">GENERATE REPORT</a></li>
         </ul>
-		
+	     <?php } ?>
 		<div id="placeholder">
 			<?php
 				if(isset($_GET['option'])) {
@@ -71,10 +75,7 @@
 		</div>
   
 	</div>
-	
-	<div id="footer">
-	  <p>copyright 2014 &reg; all right reserved</p>
-	</div>
+        
 <div>
 </body>
 </html>

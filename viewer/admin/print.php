@@ -51,8 +51,6 @@ if(isset($_GET['month'])){
 $get = new GetModel();
 $transactions = $get->browseby_month($_GET['month'],$_GET['year']);
 
-echo $_GET['year'];
-echo "   ". $_GET['month'];
 
 $grosssales = NULL;
 $techSales = NULL;
@@ -77,7 +75,7 @@ if($transactions){
   }
 }
 }else{
-  echo "\n wala";
+  echo " wala";
 }
 ?>
 <?php 
@@ -148,10 +146,10 @@ if($transactions){
 			<th class='listtitle'>Transaction</th>
 			<th class='listtitle' id='tabletitle'>Attendant</th>
 			<th class='listtitle'>Payment</th>
-			<th class='listtitle'>View</th>
+
 		</tr>
 										    
-    <?php include "listTransactions.php"; ?>
+    <?php include "listPrint.php"; ?>
 	</table>
 <div id="print_test" style="display:none">
 <p>wewewewe testststst</p>

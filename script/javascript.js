@@ -16,14 +16,21 @@ function printReport(){
     var data = {trans_type : $("#trans_type").val(),
 	       month : $("#month").val()}
 
-
-
-    $.get('/url', data, function(rs){
-	rs = new String(rs).trim();
-	var myWindow = window.open("", "my div", "height=600,width=900");
-	myWindow.document.write(rs);
-	myWindow.print();
-	myWindow.close();
+    var printContents = document.getElementById('placeholder').innerHTML;
+    var originalContents = document.body.innerHTML;
+ 
+    document.body.innerHTML = printContents;
+    window.focus();
+    window.print();
+    
+    document.body.innerHTML = originalContents;
+    
+    //$.get('localhost/mysystem/admin.php?option=print', data, function(rs){
+//	rs = new String(rs).trim();
+//	var myWindow = window.open("", "my div", "height=600,width=900");
+//	myWindow.document.write(rs);
+//	myWindow.print();
+//	myWindow.close();
     });
 }
 
@@ -529,12 +536,12 @@ function printTransactions() {
 function viewReport() {
 	document.location.href='admin.php?option=reports';
 }
-
+/*
 function printReport() {
 	window.print();
 	document.location.href='admin.php?option=reports';
 }
-
+*/
 /* End of Admin Functions */
 
 

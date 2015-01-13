@@ -152,11 +152,33 @@ if($transactions){
     <?php include "listPrint.php"; ?>
 	</table>
 <div id="print_test" style="display:none">
-<p>wewewewe testststst</p>
+<p>wewewewe 'testststst</p>
 </div>
 
+<?php
+ // INCLUDE THE phpToPDF.php FILE
+require("phpToPDF.php"); 
+
+// SET YOUR PDF OPTIONS
+// FOR ALL AVAILABLE OPTIONS, VISIT HERE:  http://phptopdf.com/documentation/
+$pdf_options = array(
+  "source_type" => 'url',
+  "source" => 'http://google.com',
+  "action" => 'save',
+  "save_directory" => '',
+  "file_name" => 'url_google.pdf');
+
+// CALL THE phptopdf FUNCTION WITH THE OPTIONS SET ABOVE
+phptopdf($pdf_options);
+
+// OPTIONAL - PUT A LINK TO DOWNLOAD THE PDF YOU JUST CREATED
+echo ("<a href='url_google.pdf'>Download Your PDF</a>");
+?>
+
+
+
 <form method='POST'>
-		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='PRINT REPORT' onclick="$('#placeholder').printArea();" />
+		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='PRINT REPORT' onclick="printReport()" />
 	</form>
 
 </div>

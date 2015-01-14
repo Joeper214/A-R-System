@@ -10,28 +10,27 @@ function charOnly(e){
 	event.preventDefault();
     }
 }
+function generateReport(){
+    var data = {year : $("#yearval").val(),
+		month : $("#monthval").val()}
+    var win = window.open('admin.php?option=print&month='+data['month']+'&year='+data['year'],'_blank');
+    win.focus();
 
+}
 
 function printReport(){
     var data = {trans_type : $("#trans_type").val(),
 	       month : $("#month").val()}
-
-    var printContents = document.getElementById('placeholder').innerHTML;
-    var originalContents = document.body.innerHTML;
- 
-    document.body.innerHTML = printContents;
-    window.focus();
-    window.print();
-    
-    document.body.innerHTML = originalContents;
-    
-    //$.get('localhost/mysystem/admin.php?option=print', data, function(rs){
-//	rs = new String(rs).trim();
-//	var myWindow = window.open("", "my div", "height=600,width=900");
-//	myWindow.document.write(rs);
-//	myWindow.print();
-//	myWindow.close();
+window.print();
+/*    
+    $.get('localhost/mysystem/admin.php?option=print&month=01&year=2015', data, function(rs){
+	rs = new String(rs).trim();
+	var myWindow = window.open("", "my div", "height=600,width=900");
+	myWindow.document.write(rs);
+	myWindow.print();
+	myWindow.close();
     });
+*/
 }
 
 

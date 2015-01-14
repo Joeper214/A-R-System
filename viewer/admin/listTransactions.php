@@ -1,4 +1,6 @@
 <?php 
+$month = null;
+$year = null;
     $get = new GetModel();
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];

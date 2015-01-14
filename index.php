@@ -53,7 +53,7 @@
 				
 				<?php
 if(isset($_POST['login'])) {
-  
+
   require "model/model.php";
 						
   $goTo = new ConnectModel();
@@ -81,6 +81,7 @@ $_SESSION['accountID']=$i['accountID'];
       $_SESSION['adminPassword'] = $password;
 
       echo "<script>goToAdmin()</script>";
+      
       
     } else {
       
@@ -118,7 +119,7 @@ $_SESSION['accountID']=$i['accountID'];
 	}
 	}else if(isset($_POST['cancel'])) {
 	  echo "<script>logout()</script>";
-	}
+}
 	  ?>
 	  </form>
 	      </div>

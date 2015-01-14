@@ -20,39 +20,11 @@
 	  <link rel="stylesheet" type="text/css" href="style/style.css" media="print"/>
 	  
 	  <link rel="stylesheet" type="text/css" href="style/popUpStyle.css" media="screen" /> 
-	  <link rel="stylesheet" type="text/css" href="style/popUpStyle.css" media="print,handheld" />  
+	  <link rel="stylesheet" type="text/css" href="style/popUpStyle.css" media="print" />  
 	  <script type="text/javascript" src="script/jQuery/jquery-1.9.1.js"></script>
         <script type="text/javascript" src="script/jQuery/jquery-ui.js"></script> 
 	<script type="text/javascript" src="script/javascript.js"></script>
 	<script type="text/javascript" src="script/bootstrap.js"></script>
-	  <style type="text/css" media="print">
-	  @page {
-	  body{
-	  background:black;
-	  }
-	  .header, .gallety-content, .close-btn, .control-nav, .footer, .bottom-line{
-	  display:none;
-	  }
-	  .middle-content{
-	  background:none;
-	  }
-	  
-	  .gallery-overlay{
-	  left:0;
-	  top:0;
-	  position:relative;
-	  }
-	  
-	  .glry-large-img{
-	  left:0;
-	  top:0;
-	  position:relative;
-	  margin:0 auto;
-	  width:100%;
-	  }
-	  
-	}
-</style>       
 
 
 	<link rel="shortcut icon" href="images/icon.ico">

@@ -28,27 +28,23 @@
 		<p>List of all transactions</p> </br></br>
    <ul id='search'>
 		<form method='POST'>
-    <li>Search by: <select name="searchType">
-    <option value="1">Firstname</option>
-    <option value="2">Middlename</option>
-    <option value="3">Lastname</option>
-    </select></li>
    <li><input type='text' class='searchinput' name='searchKey' placeholder='Search Customer'/></li>
-   <li><button  type='submit' name='search' autofocus/><a></a></button></li>
+   <li><button  type='submit' name='search' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </form>
    </ul>
-<ul id='productfilter'>
+
+		<ul id='productfilter'>
 			<li>Sort by &nbsp; </li>
 
 			<li>
                   <form method="POST">
-				<select name='sortkey' class='inputselectproductfilter'>
+				<select name='sortkey' class='inputselectproductfilter' style="height: 35px;">
 					<option value="1">Name</option>
 					<option value="2">Type</option>
 					<option value="3">Price</option>
 				</select>
 			</li>
-    <li><button type="submit" name="sort"><a></a></button></form></li>
+    <li><button type="submit" name="sort" style="height: 35px;  width: 40px;"><a></a></button></form></li>
 
 		</ul>
 	</header>
@@ -66,7 +62,7 @@
 	</table>
 	
 	<form method='POST'>
-		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printsalesreport' value='PRINT REPORT' />
+		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printsalesreport' value='GENERATE REPORT' />
 	</form>
 	
 </div>

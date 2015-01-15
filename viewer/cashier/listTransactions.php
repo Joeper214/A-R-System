@@ -7,7 +7,7 @@ if(isset($_POST['search'])){
   if($personID){
     $transactions = $get->getTransaction_by_id($personID);
   }else{
-    
+    $transactions = null;
   }
   
   /* if($_POST['searchType'] == 1){

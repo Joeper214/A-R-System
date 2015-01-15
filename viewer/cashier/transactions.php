@@ -256,7 +256,9 @@ foreach($technicals as $tech){
     <?php include "listTransactions.php"; ?>
 	</table>
 <form method='POST'>
-		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='PRINT REPORT' onclick="printReport()" />
+            <input id='monthval' type='hidden' value='<?php echo $month?>'>
+            <input id='yearval' type='hidden' value='<?php echo $year?>'>
+		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='GENERATE REPORT' onclick="cashierReport()" />
 	</form>
 
 </div>

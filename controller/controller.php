@@ -457,11 +457,12 @@
 				case 'changeaccountpicture':
 					require "viewer/cashier/changeAccountPicture.php";
 				break;
+
+				case 'print':
+					require "viewer/cashier/print.php";
+				break;
 				
 				case 'logout':
-
-		$login = new UpdateModel();
-		$login->setLogin($_SESSION['accountID'],0);
 					session_destroy();
 					echo "<script>logout()</script>";
 				break;

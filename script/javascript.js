@@ -18,6 +18,14 @@ function generateReport(){
 
 }
 
+function cashierReport(){
+    var data = {year : $("#yearval").val(),
+		month : $("#monthval").val()}
+    var win = window.open('cashier.php?option=print&month='+data['month']+'&year='+data['year'],'_blank');
+    win.focus();
+
+}
+
 function printReport(){
     var data = {trans_type : $("#trans_type").val(),
 	       month : $("#month").val()}

@@ -25,12 +25,13 @@
 	  <script type="text/javascript" src="script/jQuery/jquery-ui.js"></script> 
 	  <script type="text/javascript" src="script/javascript.js"></script>
 	  <script type="text/javascript" src="script/moveable.js"></script>
-	  <script type="text/javascript" src="script/js/jquery.PrintArea.js"></script> 
 
 	<link rel="shortcut icon" href="images/icon.ico">
 
 </head>
 <body onload="javascript:popUpHide('popUpContainer','popUpBackground');">
+	  <?php if (isset($_GET['option']) && ($_GET['option'] == "print")){?>
+         <?php }else{ ?>
 <div id="wrapper">
 	<div id="Header">
 	  <div id="banner"></div>
@@ -53,7 +54,7 @@
             <li><a href="cashier.php?option=warranty">MANAGE WARRANTY</a></li>
             <li><a href="cashier.php?option=reports">GENERATE TRANSACTION REPORT</a></li>
         </ul>
-		
+	    <?php } ?>
 		<div id="placeholder">
 			<?php
 				if(isset($_GET['option'])) {

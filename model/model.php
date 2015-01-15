@@ -523,6 +523,17 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	    return $rs;
 	  }
 
+	  public function getAllTransactions(){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction` t, person p
+                                  WHERE t.personID = p.personID
+                                  ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	  }
+
 	  
 
 

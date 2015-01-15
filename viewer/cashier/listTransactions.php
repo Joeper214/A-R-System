@@ -25,11 +25,13 @@ if(isset($_POST['search'])){
   }else if($_POST['sortkey'] == 3){
     $transactions = $get->getTransaction_ord_price();
   }
-}else if(isset($_POST['transtype'])){
+}else if(isset($_POST['transact_type'])){
   if($_POST['transact_type'] == 1){
     $transactions = $get->getOnlySales();
   }else if($_POST['transact_type'] == 2){
     $transactions = $get->getOnlyTech();
+  }else{
+    $transactions = $get->getAllTransactions();
   }
   
 }else if(isset($_POST['bmonth'])){
@@ -53,7 +55,7 @@ if(isset($_POST['search'])){
   }
   
 }else{
-    $transactions = $get->getSalesTransactions();
+    $transactions = $get->getAllTransactions();
 }
 
 if($transactions){

@@ -10,10 +10,10 @@
 			</tr>
 			<tr>
 				<td>
-					<select name='gender' class='inputselect'>
-						<option>Product</option>
-						<option>Employee</option>
-						<option>Service</option>
+					<select name='case' class='inputselect'>
+						<option value="1">Product</option>
+						<option value="2">Employee</option>
+						<option value="3">Service</option>
 					</select>
 				</td>
 			</tr>
@@ -22,14 +22,14 @@
 			</tr>
 			<tr>
 				<td>
-					<select name='gender' class='inputselect'>
-						<option>All</option>
+					<select name='category' class='inputselect'>
+						<option value="all">All</option>
 						<?php
 						$query = mysql_query("SELECT * FROM category");
 								
 						while($row = mysql_fetch_assoc($query)) {
 						?>
-							<option><?php echo $row['categoryName']; ?></option>
+							<option value="<?php echo $row['categoryID'];?>"><?php echo $row['categoryName']; ?></option>
 						<?php
 						}	
 						?>
@@ -41,14 +41,14 @@
 			</tr>
 			<tr>
 				<td>
-					<select name='gender' class='inputselect'>
-						<option>All</option>
+					<select name='brand' class='inputselect'>
+						<option value="all">All</option>
 						<?php
 						$query = mysql_query("SELECT * FROM brand");
 									
 						while($row = mysql_fetch_assoc($query)) {
 						?>
-							<option><?php echo $row['brandName']; ?></option>
+							<option value="<?php echo $['brandID'];?>"><?php echo $row['brandName']; ?></option>
 						<?php
 						}
 						?>
@@ -60,14 +60,14 @@
 			</tr>
 			<tr>
 				<td>
-					<select name='gender' class='inputselect'>
-						<option>All</option>
-						<option>Available</option>
-						<option>Unavailable</option>
-						<option>Enabled</option>
-						<option>Disabled</option>
-						<option>Defective</option>
-						<option>Disposed</option>
+					<select name='status' class='inputselect'>
+						<option value="all">All</option>
+						<option value="Available">Available</option>
+						<option value="Unavailable">Unavailable</option>
+						<option value="Enabled">Enabled</option>
+						<option value="Disabled">Disabled</option>
+						<option value="Defective">Defective</option>
+						<option value="Disposed">Disposed</option>
 					</select>
 				</td>
 			</tr>
@@ -76,11 +76,11 @@
 			</tr>
 			<tr>
 				<td>
-					<select name='gender' class='inputselect'>
-						<option>Name</option>
-						<option>Stock</option>
-						<option>Price/Rate</option>
-						<option>Status</option>
+					<select name='sort' class='inputselect'>
+						<option value="Name">Name</option>
+						<option value="Stock">Stock</option>
+						<option value="Price">Price/Rate</option>
+						<option value="Status">Status</option>
 					</select>
 				</td>
 			</tr>

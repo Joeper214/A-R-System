@@ -20,8 +20,9 @@ function generateReport(){
 
 function cashierReport(){
     var data = {year : $("#yearval").val(),
+		ttype : $("#ttype").val(),
 		month : $("#monthval").val()}
-    var win = window.open('cashier.php?option=print&month='+data['month']+'&year='+data['year'],'_blank');
+    var win = window.open('cashier.php?option=print&month='+data['month']+'&year='+data['year']+'&ttype='+data['ttype'],'_blank');
     win.focus();
 
 }

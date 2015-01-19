@@ -1,6 +1,7 @@
 <?php 
 $month = null;
 $year = null;
+$ttype = null;
     $get = new GetModel();
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
@@ -40,7 +41,10 @@ if(isset($_POST['search'])){
     $month = $_POST['month'];
   }else if(isset($_GET['month'])){
     $month = $_GET['month'];
+  }else{
+    $month = 0;
   }
+  
   if(isset($_POST['year'])){
     $year = $_POST['year'];  
   }else if(isset($_GET['year'])){
@@ -49,12 +53,20 @@ if(isset($_POST['search'])){
     $year = 0;
   }
 
+  if(isset($_POST['transact_type'])){
+    $ttype = $_POST['transact_type'];  
+  }else if(isset($_GET['ttype'])){
+    $ttype = $_GET['ttype'];    
+  }else{
+    $ttype = 0;
+  }
+
   if($month == 0){
     $transactions = $get->getSalesTransactions(); 
 
-  }else if(isset($_POST['transact_type']) && ($_POST['transact_type']== 1)){
+  }else if($ttype == 1){
     $transactions = $get->browseby_month_tech($month,$year);
-  }else if(isset($_POST['transact_type']) && ($_POST['transact_type']== 2)){
+  }else if($ttype == 2){
     $transactions = $get->browseby_month_sales($month,$year);
   }else{
     //echo "<script>alert('$month')</script>";

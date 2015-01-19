@@ -1,13 +1,16 @@
 <?php 
+$month = null;
+$year = null;
     $get = new GetModel();
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
   
   $personID = $get->searchCustomerID($key);
+
   if($personID){
     $transactions = $get->getTransaction_by_id($personID);
   }else{
-    $transactions = null;
+    
   }
   
   /* if($_POST['searchType'] == 1){
@@ -25,28 +28,32 @@ if(isset($_POST['search'])){
   }else if($_POST['sortkey'] == 3){
     $transactions = $get->getTransaction_ord_price();
   }
-}else if(isset($_POST['transact_type'])){
+}else if(isset($_POST['transtype'])){
   if($_POST['transact_type'] == 1){
     $transactions = $get->getOnlySales();
   }else if($_POST['transact_type'] == 2){
     $transactions = $get->getOnlyTech();
-  }else{
-    $transactions = $get->getAllTransactions();
   }
   
-}else if(isset($_POST['bmonth'])){
-  $month = $_POST['month'];
+}else if(isset($_POST['bmonth'])||(isset($_GET['month']))||isset($_POST['month'])){
+  if(isset($_POST['month'])){
+    $month = $_POST['month'];
+  }else if(isset($_GET['month'])){
+    $month = $_GET['month'];
+  }
   if(isset($_POST['year'])){
     $year = $_POST['year'];  
+  }else if(isset($_GET['year'])){
+    $year = $_GET['year'];    
   }else{
     $year = 0;
   }
   if($month == 0){
     $transactions = $get->getSalesTransactions(); 
     
-  }else if($_POST['transact_type'] == 1){
+  }else if(isset($_POST['transact_type']) && ($_POST['transact_type']== 1)){
     $transactions = $get->browseby_month_tech($month,$year);
-  }else if($_POST['transact_type'] == 2){
+  }else if(isset($_POST['transact_type']) && ($_POST['transact_type']== 2)){
     $transactions = $get->browseby_month_sales($month,$year);
   }else{
     //echo "<script>alert('$month')</script>";
@@ -55,7 +62,7 @@ if(isset($_POST['search'])){
   }
   
 }else{
-  $transactions = $get->getSalesTransactions();
+    $transactions = $get->getSalesTransactions();
 }
 
 if($transactions){
@@ -88,9 +95,9 @@ if($transactions){
 			   </td>
 
 <?php if($transaction['transactionType'] == 1){ ?>
-	<td class='list'><a class='view' href='cashier.php?option=salesdetail&transID=<?php echo $transaction['transactionID'];?>'><em>view detail</em></a></td>
+	<td class='list'><a class='view' href='admin.php?option=salesdetail&transID=<?php echo $transaction['transactionID'];?>'><em>view detail</em></a></td>
 <?php       }else{ ?>
-        <td  class='list'><a class='view' href='cashier.php?option=technicaldetail&transID=<?php echo $transaction['transactionID'];?>'></td>
+        <td  class='list'><a class='view' href='admin.php?option=technicaldetail&transID=<?php echo $transaction['transactionID'];?>'></td>
 				<?php       } ?>
 		
 		</tr>

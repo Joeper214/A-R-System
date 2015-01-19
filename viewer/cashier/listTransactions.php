@@ -1,4 +1,6 @@
 <?php 
+$month = null;
+$year = null;
     $get = new GetModel();
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
@@ -25,7 +27,7 @@ if(isset($_POST['search'])){
   }else if($_POST['sortkey'] == 3){
     $transactions = $get->getTransaction_ord_price();
   }
-}else if(isset($_POST['transact_type'])){
+}else if(isset($_POST['transtype'])){
   if($_POST['transact_type'] == 1){
     $transactions = $get->getOnlySales();
   }else if($_POST['transact_type'] == 2){
@@ -34,10 +36,16 @@ if(isset($_POST['search'])){
     $transactions = $get->getAllTransactions();
   }
   
-}else if(isset($_POST['bmonth'])){
-  $month = $_POST['month'];
+}else if(isset($_POST['bmonth'])||(isset($_GET['month']))||isset($_POST['month'])){
+  if(isset($_POST['month'])){
+    $month = $_POST['month'];
+  }else if(isset($_GET['month'])){
+    $month = $_GET['month'];
+  }
   if(isset($_POST['year'])){
     $year = $_POST['year'];  
+  }else if(isset($_GET['year'])){
+    $year = $_GET['year'];    
   }else{
     $year = 0;
   }

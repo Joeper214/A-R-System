@@ -129,7 +129,7 @@ if($transactions){
 }
 ?>
 <?php 
-  }else{
+}else{
    $get = new GetModel();
 $transactions = $get->getSalesTransactions();
 $grosssales = NULL;

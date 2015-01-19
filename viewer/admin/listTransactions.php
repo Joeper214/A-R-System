@@ -48,9 +48,10 @@ if(isset($_POST['search'])){
   }else{
     $year = 0;
   }
+
   if($month == 0){
     $transactions = $get->getSalesTransactions(); 
-    
+
   }else if(isset($_POST['transact_type']) && ($_POST['transact_type']== 1)){
     $transactions = $get->browseby_month_tech($month,$year);
   }else if(isset($_POST['transact_type']) && ($_POST['transact_type']== 2)){

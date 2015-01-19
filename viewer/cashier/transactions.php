@@ -50,21 +50,10 @@ if(isset($_POST['month'])){
 	<table>
 
 
-			<tr>
+
 		<form method='POST'>
-				<td>Transaction type</td>
-			</tr>
-			<tr>
-				<td>
-					<select name='transact_type' class='inputselect'>						<option value="0">All</option>
-						<option value="1">Sales</option>
-						<option value="2">Technical</option>
-					</select>
-                                      
-				</td>
 
 
-   <tr>
    <td>Browse by Month and Year</td>
    </tr>
    <tr>
@@ -91,6 +80,19 @@ if(isset($_POST['month'])){
     ?>
 
 </tr>
+<tr>
+<tr>
+<td>Transaction type</td>
+</tr>
+<td>
+<select name='transact_type' class='inputselect'>						<option value="0">All</option>
+  <option value="1">Sales</option>
+  <option value="2">Technical</option>
+  </select>
+  
+  </td>
+  <tr>
+
 <tr>
 <td colspan='2'><input name="bmonth" type='submit' class='fullinputbutton' name='viewtransactions' value='VIEW TRANSACTIONS' /></td>
   </form>

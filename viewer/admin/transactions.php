@@ -48,23 +48,11 @@ if(isset($_POST['month'])){
 		<p>Filter transactions</p>
 	</header>
 	<table>
-
-
-			<tr>
-		<form method='POST'>
-				<td>Transaction type</td>
-			</tr>
-			<tr>
-				<td>
-					<select id="trans_type" name='transact_type' class='inputselect'>						<option value="0">All</option>
-						<option value="1">Sales</option>
-						<option value="2">Technical</option>
-					</select>
-                                      
-				</td>
-
-
-   <tr>
+  <tr>
+  <form method='POST'>
+  
+  </tr>
+  
    <td>Browse by Month and Year</td>
    </tr>
    <tr>
@@ -91,6 +79,20 @@ if(isset($_POST['month'])){
     ?>
 
 </tr>
+<tr>
+<td>Transaction type</td>
+</tr>
+			<tr>
+				<td>
+					<select id="trans_type" name='transact_type' class='inputselect'>						<option value="0">All</option>
+						<option value="1">Sales</option>
+						<option value="2">Technical</option>
+					</select>
+                                      
+				</td>
+
+
+   <tr>
 <tr>
 <td colspan='2'><input name="bmonth" type='submit' class='fullinputbutton' name='viewtransactions' value='VIEW TRANSACTIONS' /></td>
   </form>
@@ -262,6 +264,7 @@ foreach($technicals as $tech){
 <form method='POST'>
             <input id='monthval' type='hidden' value='<?php echo $month?>'>
             <input id='yearval' type='hidden' value='<?php echo $year?>'>
+            <input id='ttype' type='hidden' value='<?php echo $ttype?>'>
 		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='GENERATE REPORT' onclick="generateReport();" />
 	</form>
 

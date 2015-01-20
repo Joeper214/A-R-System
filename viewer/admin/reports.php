@@ -48,7 +48,7 @@
 									
 						while($row = mysql_fetch_assoc($query)) {
 						?>
-							<option value="<?php echo $['brandID'];?>"><?php echo $row['brandName']; ?></option>
+							<option value="<?php echo $row['brandID'];?>"><?php echo $row['brandName']; ?></option>
 						<?php
 						}
 						?>

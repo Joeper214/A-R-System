@@ -47,7 +47,7 @@ if(isset($_GET['month'])){
 
   </br>
 
-  <?php if(isset($_GET['year']) && $_GET['year'] != 0) {
+<?php if(isset($_GET['year']) && $_GET['year'] != 0) {
 $get = new GetModel();
 $transactions = $get->browseby_month($_GET['month'],$_GET['year']);
 

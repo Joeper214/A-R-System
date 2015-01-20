@@ -37,14 +37,9 @@
 		<p>Technical transactions</p>
    </br>   </br>
 		   <ul id='search'>
-		<form method='POST'>
-    <li>Search by: <select name="searchType">
-    <option value="1">Firstname</option>
-    <option value="2">Middlename</option>
-    <option value="3">Lastname</option>
-    </select></li>
+	        		<form method='POST'>
    <li><input type='text' class='searchinput' name='searchKey' placeholder='Search Customer'/></li>
-   <li><button  type='submit' name='search' autofocus/><a></a></button></li>
+   <li><button  type='submit' name='search' style="height: 30px;  width: 40px;" autofocus/><a></a></button></li>
    </form>
    </ul>
 
@@ -53,12 +48,13 @@
 
 			<li>
                   <form method="POST">
-				<select name='sortkey' class='inputselectproductfilter'>
+				<select name='sortkey' class='inputselectproductfilter' style="height: 35px; ">
    <option value="1">Name</option>
    <option value="3">Price</option>
 				</select>
 			</li>
-    <li><button type="submit" name="sort"><a></a></button></form></li>
+    <li><button type="submit" name="sort" style="height: 35px;  width: 40px;"><a></a></button></form>
+</li>
 
 		</ul>
 	</header>

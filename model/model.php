@@ -565,11 +565,11 @@ public function insertSerial($serialNumber, $productID, $availability) {
 
 
 
-	  public function getTech_by_fname($key){
+	  public function getTech_by_id($id){
 	    $rs = NULL;
 	    $query = mysql_query("SELECT * FROM `transaction` t, person p
-                                  WHERE t.personID = p.personID
-                                  AND p.fname LIKE '%$key%'
+                                  WHERE p.personID = '$id'
+                                  AND t.personID = p.personID
                                   AND transactionType = 2
                                   ORDER BY dateRecorded
                                   ");

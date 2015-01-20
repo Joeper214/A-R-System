@@ -46,7 +46,6 @@ if(isset($_POST['search'])){
   }else{
     //echo $month." ".$year;
     $transactions = $get->browseby_month_tech($month,$year);
-    print_r($transactions);
   }
 }else{
       $transactions = $get->getOnlyTech();

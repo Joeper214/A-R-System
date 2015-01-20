@@ -1,30 +1,44 @@
 <div id='adminleft'>
+<?php 
+if(isset($_GET['year'])){
+
+}else{
+  $_GET['year'] = 0;
+}
+?>
+
 	<header id='accounttitle'>
 		<p>Transaction Reports</p>
 	</header>
 	<table>
 
 		<form method='POST'>
-			<tr>
-				<td>Month of: </td>
-			</tr>
-			<tr>
-				<td>
-					<select name='month' class='inputselect' style='width: 100px;'>
-						<option value="1">January</option>
-<option value="2">February</option>
-<option value="3">March</option>
-<option value="4">April</option>
-<option value="5">May</option>
-<option value="6">June</option>
-<option value="7">July</option>
-<option value="8">August</option>
-<option value="9">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>
-					</select>
-			</tr>
+ <td>Browse by Month and Year</td>
+   </tr>
+   <tr>
+  <td><select id="month" name="month" class="inputselect">
+   <option <?php if ($_GET['year'] ==0 ){echo "selected='true'" ;}?> value="0" onclick="tyear(0)">Today</option>   
+   <option <?php if($_GET['year'] == 1){echo "selected='true'" ;}?> value="01"  onclick="tyear(1)">January</option>
+ <option <?php if($_GET['year'] == 2){echo "selected='true'" ;}?>value="02" onclick="tyear(2)">February</option>
+ <option <?php if($_GET['year'] == 3){echo "selected='true'" ;}?> value="03" onclick="tyear(3)">March</option>
+ <option  <?php if($_GET['year'] == 4){echo "selected='true'" ;}?>value="04" onclick="tyear(4)">April</option>
+ <option <?php if($_GET['year'] == 5){echo "selected='true'" ;}?> value="05" onclick="tyear(5)">May</option>
+ <option <?php if($_GET['year'] == 6){echo "selected='true'" ;}?> value="06" onclick="tyear(6)">June</option>
+ <option <?php if($_GET['year'] == 7){echo "selected='true'" ;}?> value="07" onclick="tyear(7)">July</option>
+ <option <?php if($_GET['year'] == 8){echo "selected='true'" ;}?> value="08" onclick="tyear(8)">August</option>
+ <option <?php if($_GET['year'] == 9){echo "selected='true'" ;}?> value="09" onclick="tyear(9)">September</option>
+ <option <?php if($_GET['year'] == 10){echo "selected='true'" ;}?> value="10" onclick="tyear(10)">October</option>
+ <option <?php if($_GET['year'] == 11){echo "selected='true'" ;}?> value="11" onclick="tyear(11)">November</option>
+ <option <?php if($_GET['year'] == 12){echo "selected='true'" ;}?> value="12" onclick="tyear(12)">December</option>
+
+   </select></td>
+   <?php 
+   if(isset($_GET['year']) && $_GET['year'] != 0){
+    include "year.php";
+   }
+    ?>
+
+</tr>
 			<tr>
 				<td colspan='2'><input type='submit' class='fullinputbutton' name='viewreports' value='VIEW REPORTS' /></td>
 			</tr>

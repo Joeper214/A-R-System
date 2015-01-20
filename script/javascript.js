@@ -146,6 +146,10 @@ function year(id){
     	document.location.href='admin.php?option=transactions&year='+id;
 }
 
+function tyear(id){
+    	document.location.href='technician.php?option=reports&year='+id;
+}
+
 function cyear(id){
     	document.location.href='cashier.php?option=transactions&year='+id;
 }

@@ -284,7 +284,7 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	    $rs = NULL;
 	    $query = mysql_query("SELECT * FROM `transaction` t, person p
                                   WHERE t.personID = p.personID
-                                  AND transactionType = 1
+                                  AND transactionType = 2
                                   AND  dateRecorded like '%$year-$month%'                                                               ");
 	    while($row = mysql_fetch_array($query)){
 	      $rs[] = $row;

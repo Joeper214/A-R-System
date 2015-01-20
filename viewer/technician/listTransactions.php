@@ -1,8 +1,9 @@
-<?php $get = new GetModel();
+<?php 
 
 $month = null;
 $year = null;
 $ttype = null;
+$transactions = null;
     $get = new GetModel();
 if(isset($_POST['search'])){
   $key = $_POST['searchKey'];
@@ -40,10 +41,12 @@ if(isset($_POST['search'])){
   }
 
   if($month == 0){
-
+      $transactions = $get->getOnlyTech();
 
   }else{
+    //echo $month." ".$year;
     $transactions = $get->browseby_month_tech($month,$year);
+    print_r($transactions);
   }
 }else{
       $transactions = $get->getOnlyTech();
@@ -69,7 +72,7 @@ if($transactions){
 		</tr>
 								   <?php } ?>
 			    <td class="list"></td><td class="list"></td><td class='list transactionpayment'> Total </td> <td class='list transactionpayment'>P <?php echo number_format($total, 2, '.', ','); ?></td>
-<?php }else{ ?>
+																										    <?php }else{ ?>
   <tr>
     <td> Nothing to display</td>
     </tr>

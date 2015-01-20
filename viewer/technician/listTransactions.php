@@ -32,7 +32,7 @@ if($transactions){
      $amount = number_format($transaction['amountDue'], 2, '.', ',');
 ?>
 <tr>	
-   <td class='list' id='reportdate'><?php echo $date->format('m/d/Y'); ?></td>
+   <td class='list' id='reportdate'><?php echo $date->format('F j, Y'); ?></td>
    <td class='list reportscustomername'><?php echo $transaction['lname']." ,"
                                 .$transaction['fname']; ?> </td>
    <td class='list reportsattendant'><?php 

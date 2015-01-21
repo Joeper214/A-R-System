@@ -555,6 +555,12 @@
 					require "viewer/technician/changeAccountPicture.php";
 				break;
 				
+			        case 'print':
+				  require "viewer/technician/print.php";
+			        break;
+
+
+				
 				case 'logout':
 				  session_destroy();
 				  echo "<script>logout()</script>";

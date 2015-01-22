@@ -41,14 +41,13 @@ if(isset($_POST['search'])){
   }
 
   if($month == 0){
-      $transactions = $get->getOnlyTech();
-
+      $transactions = $get->getOnlyTechtoday();
   }else{
     //echo $month." ".$year;
     $transactions = $get->browseby_month_tech($month,$year);
   }
 }else{
-      $transactions = $get->getOnlyTech();
+      $transactions = $get->getOnlyTechtoday();
 }
 
 if($transactions){

@@ -48,7 +48,7 @@ if(isset($_POST['search'])){
     $transactions = $get->browseby_month_tech($month,$year);
   }
 }else{
-      $transactions = $get->getOnlyTech();
+      $transactions = $get->getOnlyTechtoday();
 }
 $total = null;
 if($transactions){

@@ -117,18 +117,8 @@ if($transactions){
 			<tr>
 				<td><h1>P <?php echo number_format($techSales, 2, '.', ','); ?></h1></td>
 			</tr>
-<tr>
-				<td><?php echo $month ?> Sales income</td>
-			</tr>
-			<tr>
-				<td><h1>P <?php echo number_format($Sales, 2, '.', ','); ?></h1></td>
-			</tr>
-			<tr>
-				<td><?php echo $month ?> Gross sales</td>
-			</tr>
-			<tr>
-		   <td><h1 style='margin: 0px; padding: 0px; font-size: 30px; color: #333;'>P <?php echo number_format($grosssales, 2, '.', ','); ?></h1></td>
-			</tr>
+
+
 		</form>
 	</table>
 </div>

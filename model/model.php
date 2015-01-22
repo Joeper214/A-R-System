@@ -715,6 +715,22 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	  }
 
 
+
+	  public function getOnlyTechtoday(){
+	    
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction` t, person p
+                                  WHERE t.personID = p.personID
+                                  AND t.transactionType=2
+                                  AND DATE(`dateRecorded`) = DATE(NOW())
+                                  ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	  }
+
+
 	  public function getTransInfo($id){
 	    $query = mysql_query("SELECT * FROM `transaction` t, person p
                                   WHERE t.personID = p.personID

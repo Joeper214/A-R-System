@@ -129,7 +129,7 @@ foreach($personInfo as $person){
 				<td class='bold'>Attendant</td>
 			</tr>
 			<tr>
-				<td><input class='input' type='text' disabled='true' name='fnameasd' value='<?php echo $_SESSION['completeName'];?>' autofocus/></td>
+				<td><input class='input' type='text' disabled='true' name='fnameasd' value='<?php echo $_SESSION['cashierName'];?>' autofocus/></td>
 			</tr>
 			<tr>
 				<td class='bold'>Transaction Date</td>

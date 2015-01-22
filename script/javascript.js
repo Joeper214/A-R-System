@@ -41,15 +41,7 @@ function printReport(){
     var data = {trans_type : $("#trans_type").val(),
 	       month : $("#month").val()}
 window.print();
-/*    
-    $.get('localhost/mysystem/admin.php?option=print&month=01&year=2015', data, function(rs){
-	rs = new String(rs).trim();
-	var myWindow = window.open("", "my div", "height=600,width=900");
-	myWindow.document.write(rs);
-	myWindow.print();
-	myWindow.close();
-    });
-*/
+
 }
 
 

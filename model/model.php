@@ -1067,17 +1067,25 @@ WHERE p.personType=0 AND p.lname LIKE '%$key%' AND p.personID=e.personID");
 
 	  }
 	  //getting no. of disposed consumable products
-	  public function getReplaced($id){
-	    $query = mysql_query("select count(*) AS Disposed FROM serialreplace s, selectedserial a, serial b
-                                  WHERE b.productID = $id
-                                  AND a.serialID = b.serialID
-                                  AND s.selectedSerialID = a.selectedSerialID
+	  public function getDisposed($id){
+	    $query = mysql_query("select count(*) AS Disposed FROM disposed
+                                  WHERE productID = '$id'
                                   ");
             while ($row = mysql_fetch_array($query)){
       	      return $row['Disposed'];
 	    }
 
 	  }
+	  public function getSold($id){
+	    $query = mysql_query("select quantity AS Sold FROM cartdetail
+                                  WHERE productID = '$id'
+                                  ");
+            while ($row = mysql_fetch_array($query)){
+      	      return $row['Sold'];
+	    }
+
+	  }
+
 	  //Get Serials
 	  public function getSerials($productID){
 

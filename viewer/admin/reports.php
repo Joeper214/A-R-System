@@ -1,6 +1,6 @@
 <div id='adminleft'>
 	<header id='accounttitle'>
-		<p>Generate Report</p>
+		<p>Query here...</p>
 	</header>
 	<table>
 
@@ -95,7 +95,7 @@
 
 <div id='adminright'>
 	<header id='accounttitle'>
-		<p>Product Report</p>
+		<p>Generate Report</p>
 	</header>
 <?php
  if(isset($_POST['case'])){
@@ -106,6 +106,8 @@
    }else if($_POST['case'] == 3){
      include "reportEmployee.php";
    }
+ }else{
+   echo "<p>please select a query and click view.</p>";
  }
 ?>
 	

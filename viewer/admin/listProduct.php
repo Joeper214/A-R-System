@@ -1,4 +1,4 @@
-<?php 
+\<?php 
 
 if(isset($_POST['searchNonConsume'])){
   $key2 = $_POST['searchKey2'];

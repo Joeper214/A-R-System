@@ -97,37 +97,17 @@
 	<header id='accounttitle'>
 		<p>Product Report</p>
 	</header>
-
-	<table id='emplisttable'>
-		<tr>	
-			<th class='listtitle producttabletitle' id='tabletitle'>Product Name</th>
-			<th class='listtitle'>Stock</th>
-			<th class='listtitle'>Price</th>
-			<th class='listtitle'>Status</th>
-		</tr>
-
-  <?php 
-		  $queryprod = mysql_query("SELECT * FROM `product`");
-							
-		while($row = mysql_fetch_assoc($queryprod)) {
-
-     $price = number_format($row['price'], 2, '.', ',');
-  ?>
-
-		<tr class='trlist'>	
-		   <td class='list' id='productname'><?php echo $row['productName'];?></td>
- 		<td class='list stock'><?php echo $row['stock']?></td>
-        	<td class='list stock'>P <?php echo $price; ?></td>
-			<td class='list'>
- <?php if($row['productStatus'] == 1){
-    echo "<a class='enabled' onclick='disableProduct({$row['productID']});' href='#'><em>Enabled</em></a>";
-      }else {
-    echo "<a class='disabled' disabled='true' onclick='enableProduct({$row['productID']});' href='#'><em>Disabled</em></a>";
-  } ?>
-</td>
-		</tr>
-   <?php }?>
-	</table>
+<?php
+ if(isset($_POST['case'])){
+   if($_POST['case'] == 1){
+     include "reportProduct.php";
+   }else if($_POST['case'] == 2){
+     include "reportEmployee.php";
+   }else if($_POST['case'] == 3){
+     include "reportEmployee.php";
+   }
+ }
+?>
 	
 	<form method='POST'>
 		<input style='width: 150px; border: none; float: right; margin: 5px 1px 5px 0px; border: 1px solid #fff; box-shadow: 0px 0px 1px #000;' type='submit' class='inputbutton' name='printreport' value='PRINT REPORT' />

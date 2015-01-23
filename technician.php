@@ -28,6 +28,9 @@
 
 </head>
 <body>
+	  <?php if(isset($_GET['option']) && ($_GET['option'] == "print")){?>
+     
+	<?php }else{?>
 <div id="wrapper">
 	<div id="Header">
 	  <div id="banner"></div>
@@ -49,7 +52,7 @@
             <li><a href="technician.php?option=managenote">MANAGE NOTES</a></li>
             <li><a href="technician.php?option=reports">GENERATE TRANSACTION REPORT</a></li>
         </ul>
-		
+		     <?php } ?>	
 		<div id="placeholder">
 			<?php
 				if(isset($_GET['option'])) {

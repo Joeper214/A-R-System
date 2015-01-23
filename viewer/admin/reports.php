@@ -12,75 +12,8 @@
 				<td>
 					<select name='case' class='inputselect'>
 						<option value="1">Product</option>
-						<option value="2">Employee</option>
+						<option value="2">Employee Sales</option>
 						<option value="3">Service</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Category</td>
-			</tr>
-			<tr>
-				<td>
-					<select name='category' class='inputselect'>
-						<option value="all">All</option>
-						<?php
-						$query = mysql_query("SELECT * FROM category");
-								
-						while($row = mysql_fetch_assoc($query)) {
-						?>
-							<option value="<?php echo $row['categoryID'];?>"><?php echo $row['categoryName']; ?></option>
-						<?php
-						}	
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Brand</td>
-			</tr>
-			<tr>
-				<td>
-					<select name='brand' class='inputselect'>
-						<option value="all">All</option>
-						<?php
-						$query = mysql_query("SELECT * FROM brand");
-									
-						while($row = mysql_fetch_assoc($query)) {
-						?>
-							<option value="<?php echo $row['brandID'];?>"><?php echo $row['brandName']; ?></option>
-						<?php
-						}
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Status</td>
-			</tr>
-			<tr>
-				<td>
-					<select name='status' class='inputselect'>
-						<option value="all">All</option>
-						<option value="Available">Available</option>
-						<option value="Unavailable">Unavailable</option>
-						<option value="Enabled">Enabled</option>
-						<option value="Disabled">Disabled</option>
-						<option value="Defective">Defective</option>
-						<option value="Disposed">Disposed</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>Sort by</td>
-			</tr>
-			<tr>
-				<td>
-					<select name='sort' class='inputselect'>
-						<option value="Name">Name</option>
-						<option value="Stock">Stock</option>
-						<option value="Price">Price/Rate</option>
-						<option value="Status">Status</option>
 					</select>
 				</td>
 			</tr>

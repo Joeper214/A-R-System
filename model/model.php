@@ -768,11 +768,20 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	  }
 
 	  //List emplyoees
-	  
+	  public function getAllEmplyeeSales($id){
+	    	    $query = mysql_query("SELECT * FROM `transaction` t, cartdetail c
+WHERE t.accountID = '$id'
+AND t.transactionID = c.transactionID");
+
+	    while($row = mysql_fetch_array($query)) {
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	  }
+
+
+
 	  public function getAllEmployees(){
-           
-
-
 	    $query = mysql_query("SELECT *
                  FROM account a,
                       employee e,

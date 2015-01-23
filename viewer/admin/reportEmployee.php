@@ -8,14 +8,14 @@
   <?php 
 	   $listEmployees = NULL;
            $access = new GetModel();
-  $listEmployees = $access -> getAllPerson();
+  $listEmployees = $access -> getAllEmployees();
 foreach ($listEmployees as $employee){
   if($employee['position'] == 2){
   ?>
 
 		<tr class='trlist'>	
 		   <td class='list' id='employeename'><?php echo $employee['lname'].', '.$employee['fname'].' '.$employee['mname']; ?></td>
- 		<td class='list stock'>P 200.00</td>
+ 		<td class='list stock'></td>
 
 </td>
 		</tr>

@@ -1037,6 +1037,7 @@ WHERE p.personType=0 AND p.lname LIKE '%$key%' AND p.personID=e.personID");
 	    return $rs;
 	  }
 
+
 	  //Get nonconsumableInfo
 	  public function getnonconsumableInfo($productID){
 
@@ -1051,6 +1052,10 @@ WHERE p.personType=0 AND p.lname LIKE '%$key%' AND p.personID=e.personID");
 	    return $rs;	    
 	    }else
 	      return null;
+	  }
+	  public function getReplaced(){
+	    $query = mysql_query("select count(*) FROM serialreplace
+                                  ");
 	  }
 	  //Get Serials
 	  public function getSerials($productID){

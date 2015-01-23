@@ -1053,9 +1053,30 @@ WHERE p.personType=0 AND p.lname LIKE '%$key%' AND p.personID=e.personID");
 	    }else
 	      return null;
 	  }
-	  public function getReplaced(){
-	    $query = mysql_query("select count(*) FROM serialreplace
+
+	  //getting no. of  replaced serials on products
+	  public function getReplaced($id){
+	    $query = mysql_query("select count(*) AS Disposed FROM serialreplace s, selectedserial a, serial b
+                                  WHERE b.productID = $id
+                                  AND a.serialID = b.serialID
+                                  AND s.selectedSerialID = a.selectedSerialID
                                   ");
+            while ($row = mysql_fetch_array($query)){
+      	      return $row['Disposed'];
+	    }
+
+	  }
+	  //getting no. of disposed consumable products
+	  public function getReplaced($id){
+	    $query = mysql_query("select count(*) AS Disposed FROM serialreplace s, selectedserial a, serial b
+                                  WHERE b.productID = $id
+                                  AND a.serialID = b.serialID
+                                  AND s.selectedSerialID = a.selectedSerialID
+                                  ");
+            while ($row = mysql_fetch_array($query)){
+      	      return $row['Disposed'];
+	    }
+
 	  }
 	  //Get Serials
 	  public function getSerials($productID){
@@ -1069,8 +1090,9 @@ WHERE p.personType=0 AND p.lname LIKE '%$key%' AND p.personID=e.personID");
 	    }
 	    if(isset($rs)){
 	    return $rs;	    
-	    }else
+	    }else{
 	      return null;
+	    }
 	  }
 
 

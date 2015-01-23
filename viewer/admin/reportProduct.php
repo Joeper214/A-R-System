@@ -34,11 +34,10 @@ while($row = mysql_fetch_assoc($queryprod)) {
         	<td class='list stock'><?php echo $row['stock'] ?></td>
 			<td class='list stock'>
  <?php if($row['productType'] == 1){
-    
-    echo "1";
-
+    $disposed = $get->getReplaced($row['productID']);
+     echo $disposed;
       }else {
-  
+     $disposed = $get-
     echo "2";
     
   } ?>

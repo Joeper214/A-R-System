@@ -416,7 +416,7 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	  public function getWarranty_sort_serial(){
 	    $rs = NULL;
 	    $query = mysql_query("SELECT * from warranty w, selectedserial s, serial a,person p
-                                  WHERE w.selectedSerialID = s.selectedSerialID
+                                 WHERE w.selectedSerialID = s.selectedSerialID
                                   AND w.personID = p.personID
                                   AND s.serialID = a.serialID
                                   ORDER BY a.serialNumber
@@ -555,6 +555,19 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	    $query = mysql_query("SELECT * FROM `transaction` t, person p
                                   WHERE t.personID = p.personID
                                   AND p.personID = {$id}
+                                  ORDER BY dateRecorded
+                                  ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	  }
+	  
+	  public function getSales_by_id($id){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction`
+                                  WHERE accountID = {$id}
+                                  AND transactionType = 1
                                   ORDER BY dateRecorded
                                   ");
 	    while($row = mysql_fetch_array($query)){

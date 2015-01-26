@@ -7,17 +7,30 @@
 
   <?php 
 	   $listEmployees = NULL;
+          
            $access = new GetModel();
   $listEmployees = $access -> getAllEmployees();
 foreach ($listEmployees as $employee){
+   $totalSales = NULL;
   if($employee['position'] == 2){
   ?>
 
 		<tr class='trlist'>	
 		   <td class='list' id='employeename'><?php echo $employee['lname'].', '.$employee['fname'].' '.$employee['mname']; ?></td>
- 		<td class='list stock'></td>
+	  <?php $empSales = $access->getSales_by_id($employee['accountID']); ?>
+	     									   
+     <?php if($empSales){
+               foreach ($empSales as $empSale){ 
+                 $totalSales += $empSale['amountDue'];
+		 $fSales = number_format($totalSales, 2, '.', ',');
+             } ?>
+	  <td class='list stock'>P <?php echo $fSales;?></td>
+     <?php }else{ $totalSales = 0; ?>
+	  <td class='list stock'><?php echo $totalSales;?></td>
+     <?php }  ?>
 
+	  
 </td>
 		</tr>
-																	  <?php }}?>
+		<?php }}?>
 	</table>

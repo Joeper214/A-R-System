@@ -577,6 +577,19 @@ public function insertSerial($serialNumber, $productID, $availability) {
 	  }
 
 
+	  public function getService_by_id($id){
+	    $rs = NULL;
+	    $query = mysql_query("SELECT * FROM `transaction`
+                                  WHERE accountID = {$id}
+                                  AND transactionType = 2
+                                  ORDER BY dateRecorded
+                                  ");
+	    while($row = mysql_fetch_array($query)){
+	      $rs[] = $row;
+	    }
+	    return $rs;
+	  }
+
 
 	  public function getTech_by_id($id){
 	    $rs = NULL;

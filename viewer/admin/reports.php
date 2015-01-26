@@ -37,7 +37,7 @@
    }else if($_POST['case'] == 2){
      include "reportEmployee.php";
    }else if($_POST['case'] == 3){
-     include "reportEmployee.php";
+     include "reportService.php";
    }
  }else{
    echo "<p>please select a query and click view.</p>";
